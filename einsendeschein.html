@@ -25,7 +25,7 @@
 
 	<div class="container">
 
-		<div class="card my-3" stlye="max-width: 500px;">
+		<div class="card my-3">
 			<img class="card-img-top"
 				src="https://www.tierarztpraxis-windhaus.de/wp-content/uploads/2020/10/Windhaus-Coronabanner-Homepage-5000x1024-10-20-1.png">
 
@@ -93,7 +93,7 @@
 								<input type="text" class="form-control" placeholder="max.mustermann@mail.de">
 								<div class="input-group-append">
 									<button id="copyMailButton" class="btn btn-secondary" type="button"
-										onclick="toggleCC()">+ CC</button>
+										onclick="toggleCC()">+</button>
 								</div>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 
 					<div id="copyMail" class="form-row d-none">
 						<div class="form-group col">
-							<label>Kopie der E-Mail</label>
+							<label>E-Mail Weiterleitung</label>
 							<div class="input-group">
 								<input type="text" class="form-control" placeholder="arbeitsgeber@mail.de">
 							</div>
@@ -119,7 +119,7 @@
 					<div class="form-row">
 						<div class="form-group col">
 							<label>Weitere Patienten?</label>
-							<select class="form-control">
+							<select id="morePatients" class="form-control" onchange="showPatients()">
 								<option>-</option>
 								<option>1</option>
 								<option>2</option>
@@ -129,16 +129,151 @@
 						</div>
 					</div>
 
+					<script>
+						function showPatients() {
+							var selected = document.getElementById("morePatients").selectedIndex;
+							switch(selected) {
+							case 0:
+								var patient = document.getElementById("patient2")
+								if(!patient.classList.contains('d-none')) patient.classList.add('d-none');
+								break;
+							default:
+								var patient = document.getElementById("patient2")
+								if(patient.classList.contains('d-none')) patient.classList.remove('d-none');
+								break;
+							}
+						}
+					</script>
+
+					<div id="patient2" class="card text-white bg-secondary my-3 d-none">
+						<div class="card-body">
+							<h5 class="card-title">Patient 2</h5>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Vorname</label>
+									<input type="text" class="form-control" placeholder="Max" required>
+								</div>
+								<div class="form-group col">
+									<label>Nachname</label>
+									<input type="text" class="form-control" placeholder="Mustermann" required>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Straße, Hausnr.</label>
+									<input type="text" class="form-control" placeholder="Musterstraße 1a" required>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-4">
+									<label>PLZ</label>
+									<input type="text" class="form-control" placeholder="12345" required>
+								</div>
+								<div class="form-group col">
+									<label>Ort</label>
+									<input type="text" class="form-control" placeholder="Musterstadt" required>
+								</div>
+							</div>
+
+							<hr />
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Telefon</label>
+									<input type="text" class="form-control" placeholder="01234 567890">
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Mobil</label>
+									<input type="text" class="form-control" placeholder="01234 567890">
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Fax</label>
+									<input type="text" class="form-control" placeholder="01234 567890">
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>E-Mail</label>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="max.mustermann@mail.de">
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
 					<hr />
 
 					<div class="form-row">
 						<div class="form-check ml-1">
-							<input class="form-check-input" type="checkbox" id="alternativeRechnungsAdresse">
+							<input class="form-check-input" type="checkbox" id="alternativeRechnungsAdresse" onclick="toggleRechnung()">
 							<label class="form-check-label" for="alternativeRechnungsAdresse">
 								Abweichende Rechnungsadresse?
 							</label>
 						</div>
 					</div>
+
+					<div id="cardRechnung" class="card text-white bg-secondary my-3 d-none">
+						<div class="card-body">
+							<h5 class="card-title">Rechnungsadresse</h5>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Vorname</label>
+									<input type="text" class="form-control" placeholder="Max" required>
+								</div>
+								<div class="form-group col">
+									<label>Nachname</label>
+									<input type="text" class="form-control" placeholder="Mustermann" required>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>Straße, Hausnr.</label>
+									<input type="text" class="form-control" placeholder="Musterstraße 1a" required>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-4">
+									<label>PLZ</label>
+									<input type="text" class="form-control" placeholder="12345" required>
+								</div>
+								<div class="form-group col">
+									<label>Ort</label>
+									<input type="text" class="form-control" placeholder="Musterstadt" required>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col">
+									<label>E-Mail</label>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="max.mustermann@mail.de">
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<script>
+						function toggleRechnung() {
+							document.getElementById("cardRechnung").classList.toggle('d-none');
+						}
+					</script>
 
 					<hr />
 
@@ -298,7 +433,7 @@
 			})();
 
 			var clearBtn = document.getElementById("clearCanvas");
-			clearBtn.addEventListener("click", function(e) {
+			clearBtn.addEventListener("click", function (e) {
 				canvas.width = canvas.width;
 			});
 
