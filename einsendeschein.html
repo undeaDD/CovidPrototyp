@@ -29,40 +29,40 @@
         <div class="card my-3">
             <img class="card-img-top bg-secondary" src="assets/header.png">
             <div class="card-body">
-                <form name="main" autocomplete="on" action="success.html" onsubmit="return checkAndInsert();">
+                <form name="main" autocomplete="on" onsubmit="checkAndInsert(); return false;">
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Vorname*</label>
-                            <input name="p1_firstname" type="text" class="form-control" placeholder="Max">
+                            <input name="p1_firstname" type="text" class="form-control required" placeholder="Max">
                         </div>
                         <div class="form-group col">
                             <label>Nachname*</label>
-                            <input name="p1_lastname" type="text" class="form-control" placeholder="Mustermann">
+                            <input name="p1_lastname" type="text" class="form-control required" placeholder="Mustermann">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Straße, Hausnummer*</label>
-                            <input name="p1_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                            <input name="p1_street" type="text" class="form-control required" placeholder="Musterstraße 1a">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-4">
                             <label>PLZ*</label>
-                            <input name="p1_plz" type="number" class="form-control" placeholder="12345">
+                            <input name="p1_plz" type="number" class="form-control required" placeholder="12345">
                         </div>
                         <div class="form-group col">
                             <label>Ort*</label>
-                            <input name="p1_city" type="text" class="form-control" placeholder="Musterstadt">
+                            <input name="p1_city" type="text" class="form-control required" placeholder="Musterstadt">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Geburtsdatum*</label>
-                            <input name="p1_birthdate" type="date" class="form-control" value="2020-01-01">
+                            <input name="p1_birthdate" type="date" class="form-control required" value="2020-01-01">
                         </div>
                     </div>
 
@@ -127,8 +127,8 @@
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Weitere Personen?</label>
-                            <select name="morepatients" id="morePatients" class="form-control" onchange="showPatients()">
-								<option>-</option>
+                            <select name="morepatients" id="morePatients" class="form-control required" onchange="showPatients()">
+								<option>Nein</option>
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
@@ -137,28 +137,45 @@
                         </div>
                     </div>
 
+                    <small class="form-text text-muted mt-2"><b>Wichtig: </b>Die Auswahl mehrerer Personen, führt zur <b>poolung</b> der PCR-Tests. Falls Sie fragen dazu haben, wenden Sie sich gerne an einen Mitarbeiter.</small>
+
                     <script>
+                        function configurePatient(enabled, index) {
+                            if (enabled) {
+                                document.getElementById("patient" + index).classList.remove('d-none');
+                                document.getElementsByName("p" + index + "_firstname")[0].classList.add('required');
+                                document.getElementsByName("p" + index + "_lastname")[0].classList.add('required');
+                                document.getElementsByName("p" + index + "_street")[0].classList.add('required');
+                                document.getElementsByName("p" + index + "_plz")[0].classList.add('required');
+                                document.getElementsByName("p" + index + "_city")[0].classList.add('required');
+                                document.getElementsByName("p" + index + "_birthdate")[0].classList.add('required');
+                            } else {
+                                document.getElementById("patient" + index).classList.add('d-none');
+                                document.getElementsByName("p" + index + "_firstname")[0].classList.remove('required');
+                                document.getElementsByName("p" + index + "_lastname")[0].classList.remove('required');
+                                document.getElementsByName("p" + index + "_street")[0].classList.remove('required');
+                                document.getElementsByName("p" + index + "_plz")[0].classList.remove('required');
+                                document.getElementsByName("p" + index + "_city")[0].classList.remove('required');
+                                document.getElementsByName("p" + index + "_birthdate")[0].classList.remove('required');
+                            }
+                        }
+
                         function showPatients() {
                             const selected = document.getElementById("morePatients").selectedIndex;
-                            const patient2 = document.getElementById("patient2");
-                            const patient3 = document.getElementById("patient3");
-                            const patient4 = document.getElementById("patient4");
-                            const patient5 = document.getElementById("patient5");
-
-                            if (!patient2.classList.contains('d-none')) patient2.classList.add('d-none');
-                            if (!patient3.classList.contains('d-none')) patient3.classList.add('d-none');
-                            if (!patient4.classList.contains('d-none')) patient4.classList.add('d-none');
-                            if (!patient5.classList.contains('d-none')) patient5.classList.add('d-none');
+                            configurePatient(false, 2);
+                            configurePatient(false, 3);
+                            configurePatient(false, 4);
+                            configurePatient(false, 5);
 
                             switch (selected) {
                                 case 4:
-                                    if (patient5.classList.contains('d-none')) patient5.classList.remove('d-none');
+                                    configurePatient(true, 5);
                                 case 3:
-                                    if (patient4.classList.contains('d-none')) patient4.classList.remove('d-none');
+                                    configurePatient(true, 4);
                                 case 2:
-                                    if (patient3.classList.contains('d-none')) patient3.classList.remove('d-none');
+                                    configurePatient(true, 3);
                                 case 1:
-                                    if (patient2.classList.contains('d-none')) patient2.classList.remove('d-none');
+                                    configurePatient(true, 2);
                                 default:
                                     break;
                             }
@@ -469,7 +486,7 @@
 
                     <div class="form-row">
                         <div class="form-check ml-1">
-                            <input name="invoice_enabled" class="form-check-input" type="checkbox" id="alternativeRechnungsAdresse" onclick="toggleRechnung()">
+                            <input name="invoice_enabled" class="form-check-input required" type="checkbox" id="alternativeRechnungsAdresse" onclick="toggleRechnung()">
                             <label class="form-check-label" for="alternativeRechnungsAdresse">
 								Abweichende Rechnungsadresse?
 							</label>
@@ -482,12 +499,12 @@
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label>Vorname*</label>
+                                    <label>Vorname oder Firma*</label>
                                     <input name="invoice_firstname" type="text" class="form-control" placeholder="Max">
                                 </div>
                                 <div class="form-group col">
-                                    <label>Nachname*</label>
-                                    <input name="invoice_lastname" type="text" class="form-control" placeholder="Mustermann">
+                                    <label>Nachname</label>
+                                    <input name="invoice_lastname" type="text" class="form-control" placeholder="(Mustermann)">
                                 </div>
                             </div>
 
@@ -524,6 +541,11 @@
                     <script>
                         function toggleRechnung() {
                             document.getElementById("cardRechnung").classList.toggle('d-none');
+                            document.getElementsByName("invoice_firstname")[0].classList.toggle('required');
+                            document.getElementsByName("invoice_street")[0].classList.toggle('required');
+                            document.getElementsByName("invoice_plz")[0].classList.toggle('required');
+                            document.getElementsByName("invoice_city")[0].classList.toggle('required');
+                            document.getElementsByName("invoice_email")[0].classList.toggle('required');
                         }
                     </script>
 
@@ -531,7 +553,7 @@
 
                     <div class="form-row">
                         <div class="form-check ml-1">
-                            <input name="datenschutz" class="form-check-input" type="checkbox" id="datenschutz">
+                            <input name="datenschutz" class="form-check-input required" type="checkbox" id="datenschutz">
                             <label class="form-check-label" for="datenschutz">
 								Datenschutzbestimmungen akzeptieren
 							</label>
@@ -561,6 +583,23 @@
                     <small class="form-text text-muted mb-2 mt-1">* kennzeichnet Pflichtfelder</small>
                 </form>
 
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Erfolgreich Abgesendet</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Das Dokument wrude erfolgreich einem Mitarbeiter übermittelt.</br>
+                        </br>Bitte folgen Sie dem weiteren Ablauf auf der nächsten Seite.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://www.tierarztpraxis-windhaus.de/corona/" role="button" class="btn btn-secondary">Fertig</a>
+                </div>
             </div>
         </div>
     </div>
@@ -620,11 +659,81 @@
         });
 
         function checkAndInsert() {
+            var result = true;
             const form = document.forms["main"];
-            var p1_firstname = form["p1_firstname"];
+            const array = [...form.elements];
 
-            $('#errorModal').modal('show')
-            return false;
+            var obj = array.reduce(function(dict, elem, index) {
+                if (elem.value == "") {
+                    if (elem.classList.contains("required")) {
+                        elem.classList.add("is-invalid");
+                        result = false;
+                    }
+                } else {
+                    elem.classList.remove("is-invalid");
+                    dict[elem.name] = elem.value;
+                }
+                return dict;
+            }, {});
+
+
+            if (!obj.p1_telephone && !obj.p1_mobile && !obj.p1_fax && !obj.p1_email) {
+                form["p1_telephone"].classList.add("is-invalid");
+                result = false;
+            }
+
+            if (form["morepatients"].value == "Nein") {
+                delete obj.morepatients;
+            }
+
+            const selected = document.getElementById("morePatients").selectedIndex;
+            switch (selected) {
+                case 3:
+                    delete obj.p5_birthdate;
+                    break;
+                case 2:
+                    delete obj.p5_birthdate;
+                    delete obj.p4_birthdate;
+                    break;
+                case 1:
+                    delete obj.p5_birthdate;
+                    delete obj.p4_birthdate;
+                    delete obj.p3_birthdate;
+                    break;
+                default:
+                    delete obj.p2_birthdate;
+                    delete obj.p3_birthdate;
+                    delete obj.p4_birthdate;
+                    delete obj.p5_birthdate;
+            }
+
+            if (!form["invoice_enabled"].checked) {
+                obj.invoice_enabled = false;
+            } else {
+                obj.invoice_enabled = true;
+            }
+
+            if (!form["datenschutz"].checked) {
+                obj.datenschutz = false;
+                result = false;
+            } else {
+                obj.datenschutz = true;
+            }
+
+            obj.signature = document.getElementById("sig-canvas").toDataURL();
+            console.log(obj);
+
+            obj["insertDate"] = (new Date()).toLocaleDateString();
+
+            if (result) {
+                const key = firebase.database().ref().child('requests').push().key;
+                firebase.database().ref('requests/' + key).set(obj);
+                $('#successModal').modal('show');
+                return false;
+            } else {
+                $('#errorModal').modal('show');
+                return false;
+            }
         }
     </script>
 

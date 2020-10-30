@@ -29,3 +29,11 @@ body {
     color: #BAAC9E;
     opacity: 1;
 }
+
+.custom-select.is-invalid,
+.form-control.is-invalid,
+.was-validated .custom-select:invalid,
+.was-validated .form-control:invalid {
+    border-color: #dc3545;
+    border: 2px solid red;
+}
