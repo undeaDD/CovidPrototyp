@@ -7,6 +7,7 @@
 }
 
 body {
+    background: url("bg.png");
     overscroll-behavior-y: none;
 }
 
@@ -27,12 +28,4 @@ body {
 .form-control::placeholder {
     color: #BAAC9E;
     opacity: 1;
-}
-
-.back-to-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    color: white;
-    background-color: #BAAC9E;
 }
