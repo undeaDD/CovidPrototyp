@@ -1,7 +1,38 @@
 #sig-canvas {
-	border: 2px dotted #CCCCCC;
-	border-radius: 15px;
-	cursor: crosshair;
-	width: 100%;
-	height: 200px;
-  }
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+    width: 100%;
+    height: 200px;
+}
+
+body {
+    overscroll-behavior-y: none;
+}
+
+.form-control:focus {
+    border-color: #BAAC9E;
+    box-shadow: 0 0 0 0.2rem #BAAC9E;
+}
+
+.bg-secondary {
+    background-color: #BAAC9E !important;
+}
+
+.btn-secondary {
+    background-color: #BAAC9E !important;
+    border-color: #BAAC9E !important;
+}
+
+.form-control::placeholder {
+    color: #BAAC9E;
+    opacity: 1;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    color: white;
+    background-color: #BAAC9E;
+}
