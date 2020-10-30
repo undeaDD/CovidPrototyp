@@ -18,7 +18,7 @@
 
 <body>
 
-    <nav class="navbar sticky-top navbar-dark" style="background-color: rgba(186,172,158,0.81);">
+    <nav class="navbar navbar-dark" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
             <img src="assets/logo.png" height="70.22" class="d-inline-block align-center mx-4">
         </a>
@@ -30,7 +30,6 @@
             <img class="card-img-top bg-secondary" src="assets/header.png">
             <div class="card-body">
                 <form autocomplete="on" onsubmit="checkAndInsert(); return false;">
-
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Vorname*</label>
@@ -168,7 +167,7 @@
 
                     <div id="patient2" class="card text-white bg-secondary my-3 d-none">
                         <div class="card-body">
-                            <h5 class="card-title">Person 2</h5>
+                            <h5 class="card-title">2. Person</h5>
 
                             <div class="form-row">
                                 <div class="form-group col">
@@ -566,6 +565,22 @@
         </div>
     </div>
 
+    <div id="errorModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Formular fehlerhaft</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bitte füllen sie alle <b>Pflichtfelder (mit * markiert)</b> aus, damit das Dokument abgesendet werden kann.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="topNav">
             <ul class="navbar-nav mx-auto">
@@ -605,7 +620,7 @@
         });
 
         function checkAndInsert() {
-            console.log("...");
+            $('#errorModal').modal('show')
         }
     </script>
 
