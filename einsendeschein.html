@@ -18,11 +18,30 @@
 
 <body>
 
-    <nav class="navbar navbar-dark" style="background-color: rgba(186,172,158,0.81);">
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
-            <img src="assets/logo.png" height="70.22" class="d-inline-block align-center mx-4">
+            <img src="assets/logo.png" height="60" class="d-inline-block align-center mx-4">
         </a>
+
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" id="google_translate_element">
+                </li>
+            </ul>
+        </div>
     </nav>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'de'
+            }, 'google_translate_element');
+
+            jQuery('.goog-logo-link').css('display', 'none');
+            jQuery('.goog-te-gadget').css('font-size', '0');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <div class="container">
 
@@ -128,7 +147,7 @@
                         <div class="form-group col">
                             <label>Weitere Personen?</label>
                             <select name="morepatients" id="morePatients" class="form-control required" onchange="showPatients()">
-								<option>Nein</option>
+								<option>-</option>
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
@@ -682,10 +701,6 @@
                 result = false;
             }
 
-            if (form["morepatients"].value == "Nein") {
-                delete obj.morepatients;
-            }
-
             const selected = document.getElementById("morePatients").selectedIndex;
             switch (selected) {
                 case 3:
@@ -701,6 +716,7 @@
                     delete obj.p3_birthdate;
                     break;
                 default:
+                    delete obj.morepatients;
                     delete obj.p2_birthdate;
                     delete obj.p3_birthdate;
                     delete obj.p4_birthdate;

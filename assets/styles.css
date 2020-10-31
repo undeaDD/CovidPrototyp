@@ -9,6 +9,7 @@
 body {
     background: url("bg.png");
     overscroll-behavior-y: none;
+    top: 0 !important;
 }
 
 .form-control:focus {
@@ -36,4 +37,12 @@ body {
 .was-validated .form-control:invalid {
     border-color: #dc3545;
     border: 2px solid red;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-tooltip {
+    display: none !important;
 }
