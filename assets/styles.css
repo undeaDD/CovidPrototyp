@@ -46,3 +46,13 @@ body {
 .goog-tooltip {
     display: none !important;
 }
+
+.custom-file-input~.custom-file-label::after {
+    content: "Auswählen";
+}
+
+.custom-file-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

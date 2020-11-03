@@ -85,6 +85,33 @@
                         </div>
                     </div>
 
+                    <label>Personalausweis</label>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label><small>Vorderseite</small></label>
+                            <div class="custom-file">
+                                <input name="p1_front" type="file" class="custom-file-input" id="inputGroupFile01" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                <label class="custom-file-label" for="inputGroupFile01"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col">
+                            <label><small>Rückseite</small></label>
+                            <div class="custom-file">
+                                <input name="p1_back" type="file" class="custom-file-input" id="inputGroupFile02" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                <label class="custom-file-label" for="inputGroupFile02"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function updateLabel(event) {
+                            var fileName = event.target.files[0].name;
+                            if (event.target.nextElementSibling != null) {
+                                event.target.nextElementSibling.innerText = fileName;
+                            }
+                        }
+                    </script>
+
                     <hr />
 
                     <div class="form-row">
@@ -156,7 +183,7 @@
                         </div>
                     </div>
 
-                    <small class="form-text text-muted mt-2"><b>Wichtig: </b>Die Auswahl mehrerer Personen, führt zur <b>poolung</b> der PCR-Tests. Falls Sie fragen dazu haben, wenden Sie sich gerne an einen Mitarbeiter.</small>
+                    <small class="form-text text-muted mt-2"><b>Wichtig: </b>Die Auswahl mehrerer Personen, führt zur <b>Poolung</b> der PCR-Tests. Falls Sie fragen dazu haben, wenden Sie sich gerne an einen Mitarbeiter.</small>
 
                     <script>
                         function configurePatient(enabled, index) {
@@ -241,6 +268,24 @@
                                 </div>
                             </div>
 
+                            <label>Personalausweis</label>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label><small>Vorderseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p2_front" type="file" class="custom-file-input" id="inputGroupFile03" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile03"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label><small>Rückseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p2_back" type="file" class="custom-file-input" id="inputGroupFile04" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile04"></label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr />
 
                             <div class="form-row">
@@ -313,6 +358,24 @@
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
                                     <input name="p3_birthdate" type="date" class="form-control" value="2020-01-01">
+                                </div>
+                            </div>
+
+                            <label>Personalausweis</label>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label><small>Vorderseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p3_front" type="file" class="custom-file-input" id="inputGroupFile05" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile05"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label><small>Rückseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p3_back" type="file" class="custom-file-input" id="inputGroupFile06" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile06"></label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -391,6 +454,24 @@
                                 </div>
                             </div>
 
+                            <label>Personalausweis</label>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label><small>Vorderseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p4_front" type="file" class="custom-file-input" id="inputGroupFile06" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile06"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label><small>Rückseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p4_back" type="file" class="custom-file-input" id="inputGroupFile07" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile07"></label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr />
 
                             <div class="form-row">
@@ -463,6 +544,24 @@
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
                                     <input name="p5_birthdate" type="date" class="form-control" value="2020-01-01">
+                                </div>
+                            </div>
+
+                            <label>Personalausweis</label>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label><small>Vorderseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p5_front" type="file" class="custom-file-input" id="inputGroupFile08" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile08"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label><small>Rückseite</small></label>
+                                    <div class="custom-file">
+                                        <input name="p5_back" type="file" class="custom-file-input" id="inputGroupFile09" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <label class="custom-file-label" for="inputGroupFile09"></label>
+                                    </div>
                                 </div>
                             </div>
 
