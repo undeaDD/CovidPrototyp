@@ -13,6 +13,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://www.tierarztpraxis-windhaus.de/wp-content/uploads/2020/07/cropped-wt-icon-32x32.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
+    <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet">
+    <link href="https://raw.githubusercontent.com/Talv/x-editable/develop/dist/bootstrap4-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
     <title>Tierarztpraxis Windhaus - Corona Test</title>
 </head>
@@ -25,73 +28,86 @@
         </a>
     </nav>
 
-    <!--https://examples.bootstrap-table.com/#welcomes/from-html.html#view-source-->
 
-    <div class="container">
-        <table data-toggle="table" data-search="true" data-show-columns="true">
-            <thead>
-                <tr class="tr-class-1">
-                    <th data-field="name" rowspan="2" data-valign="middle">Name</th>
-                    <th colspan="3">Detail</th>
-                </tr>
-                <tr class="tr-class-2">
-                    <th data-field="star">Stars</th>
-                    <th data-field="forks">Forks</th>
-                    <th data-field="description">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="tr-id-1" class="tr-class-1" data-title="bootstrap table" data-object='{"key": "value"}'>
-                    <td id="td-id-1" class="td-class-1" data-title="bootstrap table">
-                        <a href="https://github.com/wenzhixin/bootstrap-table" target="_blank">bootstrap-table</a>
-                    </td>
-                    <td data-value="526">8827</td>
-                    <td data-text="122">3603</td>
-                    <td data-i18n="Description">An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3)
-                    </td>
-                </tr>
-                <tr id="tr-id-2" class="tr-class-2">
-                    <td id="td-id-2" class="td-class-2">
-                        <a href="https://github.com/wenzhixin/multiple-select" target="_blank">multiple-select</a>
-                    </td>
-                    <td>1615</td>
-                    <td>623</td>
-                    <td>A jQuery plugin to select multiple elements with checkboxes :)
-                    </td>
-                </tr>
-                <tr id="tr-id-3" class="tr-class-3">
-                    <td id="td-id-3" class="td-class-3">
-                        <a href="https://github.com/wenzhixin/bootstrap-show-password" target="_blank">bootstrap-show-password</a>
-                    </td>
-                    <td>220</td>
-                    <td>85</td>
-                    <td>Show/hide password plugin for twitter bootstrap.
-                    </td>
-                </tr>
-                <tr id="tr-id-4" class="tr-class-4">
-                    <td id="td-id-4" class="td-class-4">
-                        <a href="https://github.com/wenzhixin/bootstrap-table-examples" target="_blank">bootstrap-table-examples</a>
-                    </td>
-                    <td>1734</td>
-                    <td>1532</td>
-                    <td>Bootstrap Table Examples</td>
-                </tr>
-                <tr id="tr-id-5" class="tr-class-5">
-                    <td id="td-id-5" class="td-class-5">
-                        <a href="https://github.com/wenzhixin/scutech-redmine" target="_blank">scutech-redmine</a>
-                        <td>24</td>
-                        <td>18</td>
-                        <td>Redmine notification tools for chrome extension.</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container d-lg-none">
+        test
     </div>
+    <div class="container-fluid d-none d-lg-block">
+        <div class="card text-white bg-success my-3">
+            <div class="card-header">
+                <b class="card-title">Neue Anmeldungen</b>
+            </div>
+            <div class="card-body pt-1">
+                <table class="table table-bordered table-hover table-striped" id="table1" data-resizable="true" data-show-export="true" data-search-on-enter-key="true" data-search-accent-neutralise="true" data-search="true" data-id-field="id" data-select-item-name="id"
+                    data-toggle="table" data-click-to-select="true" data-show-columns="true">
+                    <thead class="sticky-header">
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="id">ID</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="price">Vorname</th>
+                            <th data-field="price">Straße, Hausnummer</th>
+                            <th data-field="price">PLZ</th>
+                            <th data-field="price">Ort</th>
+                            <th data-field="price">Geburtsdatum</th>
+                            <th data-field="price">Telefon</th>
+                            <th data-field="price">Mobil</th>
+                            <th data-field="price">Fax</th>
+                            <th data-field="price">Email</th>
+                            <th data-field="price">Email Kopie</th>
+                            <th data-field="price">Datum Entnahme</th>
+                            <th data-field="price">Datum Eingang</th>
+                            <th data-field="price">Datum Test</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
 
+        <div class="card my-3">
+            <div class="card-header">
+                <b class="card-title">Patienten Bestandsliste</b>
+            </div>
+            <div class="card-body pt-1">
+                <table class="table table-bordered table-hover table-striped" id="table2" data-resizable="true" data-show-export="true" data-search-on-enter-key="true" data-search-accent-neutralise="true" data-search="true" data-id-field="id" data-select-item-name="id"
+                    data-toggle="table" data-click-to-select="true" data-show-columns="true">
+                    <thead class="sticky-header">
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="id">ID</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="price">Vorname</th>
+                            <th data-field="price">Straße, Hausnummer</th>
+                            <th data-field="price">PLZ</th>
+                            <th data-field="price">Ort</th>
+                            <th data-field="price">Geburtsdatum</th>
+                            <th data-field="price">Telefon</th>
+                            <th data-field="price">Mobil</th>
+                            <th data-field="price">Fax</th>
+                            <th data-field="price">Email</th>
+                            <th data-field="price">Email Kopie</th>
+                            <th data-field="price">Datum Entnahme</th>
+                            <th data-field="price">Datum Eingang</th>
+                            <th data-field="price">Datum Test</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <script src="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/resizable/bootstrap-table-resizable.min.js"></script>
+    <script src="https://raw.githubusercontent.com/Talv/x-editable/develop/dist/bootstrap4-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
     <script>

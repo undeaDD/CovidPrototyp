@@ -56,3 +56,9 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@media print {
+    .container {
+        width: auto;
+    }
+}
