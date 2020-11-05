@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.tierarztpraxis-windhaus.de/wp-content/uploads/2020/07/cropped-wt-icon-32x32.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Tierarztpraxis Windhaus - Corona Test</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
+        <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
+            <img src="assets/logo.png" height="60" class="d-inline-block align-center mx-4">
+        </a>
+    </nav>
+
+    <!--https://examples.bootstrap-table.com/#welcomes/from-html.html#view-source-->
+
+    <div class="container">
+        <table data-toggle="table" data-search="true" data-show-columns="true">
+            <thead>
+                <tr class="tr-class-1">
+                    <th data-field="name" rowspan="2" data-valign="middle">Name</th>
+                    <th colspan="3">Detail</th>
+                </tr>
+                <tr class="tr-class-2">
+                    <th data-field="star">Stars</th>
+                    <th data-field="forks">Forks</th>
+                    <th data-field="description">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tr-id-1" class="tr-class-1" data-title="bootstrap table" data-object='{"key": "value"}'>
+                    <td id="td-id-1" class="td-class-1" data-title="bootstrap table">
+                        <a href="https://github.com/wenzhixin/bootstrap-table" target="_blank">bootstrap-table</a>
+                    </td>
+                    <td data-value="526">8827</td>
+                    <td data-text="122">3603</td>
+                    <td data-i18n="Description">An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3)
+                    </td>
+                </tr>
+                <tr id="tr-id-2" class="tr-class-2">
+                    <td id="td-id-2" class="td-class-2">
+                        <a href="https://github.com/wenzhixin/multiple-select" target="_blank">multiple-select</a>
+                    </td>
+                    <td>1615</td>
+                    <td>623</td>
+                    <td>A jQuery plugin to select multiple elements with checkboxes :)
+                    </td>
+                </tr>
+                <tr id="tr-id-3" class="tr-class-3">
+                    <td id="td-id-3" class="td-class-3">
+                        <a href="https://github.com/wenzhixin/bootstrap-show-password" target="_blank">bootstrap-show-password</a>
+                    </td>
+                    <td>220</td>
+                    <td>85</td>
+                    <td>Show/hide password plugin for twitter bootstrap.
+                    </td>
+                </tr>
+                <tr id="tr-id-4" class="tr-class-4">
+                    <td id="td-id-4" class="td-class-4">
+                        <a href="https://github.com/wenzhixin/bootstrap-table-examples" target="_blank">bootstrap-table-examples</a>
+                    </td>
+                    <td>1734</td>
+                    <td>1532</td>
+                    <td>Bootstrap Table Examples</td>
+                </tr>
+                <tr id="tr-id-5" class="tr-class-5">
+                    <td id="td-id-5" class="td-class-5">
+                        <a href="https://github.com/wenzhixin/scutech-redmine" target="_blank">scutech-redmine</a>
+                        <td>24</td>
+                        <td>18</td>
+                        <td>Redmine notification tools for chrome extension.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script>
+        firebase.initializeApp({
+            apiKey: "AIzaSyAKzR5AiJVZ3Iz5tJrWsLeBVDZJl2SSqLE",
+            authDomain: "coronaprototyp.firebaseapp.com",
+            databaseURL: "https://coronaprototyp.firebaseio.com",
+            projectId: "coronaprototyp",
+            storageBucket: "coronaprototyp.appspot.com",
+            messagingSenderId: "857488715212",
+            appId: "1:857488715212:web:763e73804d890e4bf40169"
+        });
+    </script>
+
+</body>
+
+</html>

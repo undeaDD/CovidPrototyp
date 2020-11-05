@@ -101,6 +101,7 @@
                                 <label class="custom-file-label" for="inputGroupFile02"></label>
                             </div>
                         </div>
+                        <small class="form-text text-muted col-12">Der Personalausweis wird zur Überprüfung der Eingaben genutzt. (optional)</small>
                     </div>
 
                     <script>
@@ -839,6 +840,7 @@
             console.log(obj);
 
             obj["insertDate"] = (new Date()).toLocaleDateString();
+            obj["OS"] = navigator.platform;
 
             if (result) {
                 const key = firebase.database().ref().child('requests').push().key;
