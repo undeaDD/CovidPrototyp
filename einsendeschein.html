@@ -5,22 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
     <meta name="HandheldFriendly" content="true">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.tierarztpraxis-windhaus.de/wp-content/uploads/2020/07/cropped-wt-icon-32x32.jpg">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/styles.css">
-    <title>Tierarztpraxis Windhaus - Corona Test</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Tierarztpraxis Windhaus - Einsendeschein</title>
 </head>
 
 <body>
 
     <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
-            <img src="assets/logo.png" height="60" class="d-inline-block align-center mx-4">
+            <img src="assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
         </a>
 
         <div class="navbar-collapse collapse">
@@ -31,57 +34,47 @@
         </div>
     </nav>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'de'
-            }, 'google_translate_element');
 
-            jQuery('.goog-logo-link').css('display', 'none');
-            jQuery('.goog-te-gadget').css('font-size', '0');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <div class="container">
 
         <div class="card my-3">
-            <img class="card-img-top bg-secondary" src="assets/header.png">
+            <img class="card-img-top bg-secondary" src="assets/img/header.png">
             <div class="card-body">
-                <form name="main" autocomplete="on" onsubmit="checkAndInsert(); return false;">
+                <form action="#" name="main" autocomplete="on" onsubmit="checkAndInsert(); return false">
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Vorname*</label>
-                            <input name="p1_firstname" type="text" class="form-control required" placeholder="Max">
+                            <input name="p1_firstname" type="text" class="form-control required" placeholder="Max" autocomplete="given-name"">
                         </div>
                         <div class="form-group col">
                             <label>Nachname*</label>
-                            <input name="p1_lastname" type="text" class="form-control required" placeholder="Mustermann">
+                            <input name="p1_lastname" type="text" class="form-control required" placeholder="Mustermann" autocomplete="family-name">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Straße, Hausnummer*</label>
-                            <input name="p1_street" type="text" class="form-control required" placeholder="Musterstraße 1a">
+                            <input name="p1_street" type="text" class="form-control required" placeholder="Musterstraße 1a" autocomplete="street-address">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-4">
                             <label>PLZ*</label>
-                            <input name="p1_plz" type="number" class="form-control required" placeholder="12345">
+                            <input name="p1_zip" type="number" class="form-control required" placeholder="12345" autocomplete="postal-code">
                         </div>
                         <div class="form-group col">
                             <label>Ort*</label>
-                            <input name="p1_city" type="text" class="form-control required" placeholder="Musterstadt">
+                            <input name="p1_address" type="text" class="form-control required" placeholder="Musterstadt" autocomplete="address-level2">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Geburtsdatum*</label>
-                            <input name="p1_birthdate" type="date" class="form-control required" value="2020-01-01">
+                            <input name="p1_birthdate" type="date" class="form-control required" value="2020-01-01" autocomplete="bday">
                         </div>
                     </div>
 
@@ -90,49 +83,40 @@
                         <div class="form-group col">
                             <label><small>Vorderseite</small></label>
                             <div class="custom-file">
-                                <input name="p1_front" type="file" class="custom-file-input" id="inputGroupFile01" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                <input name="p1_front" type="file" class="custom-file-input" id="inputGroupFile01" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                 <label class="custom-file-label" for="inputGroupFile01"></label>
                             </div>
                         </div>
                         <div class="form-group col">
                             <label><small>Rückseite</small></label>
                             <div class="custom-file">
-                                <input name="p1_back" type="file" class="custom-file-input" id="inputGroupFile02" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                <input name="p1_back" type="file" class="custom-file-input" id="inputGroupFile02" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                 <label class="custom-file-label" for="inputGroupFile02"></label>
                             </div>
                         </div>
                         <small class="form-text text-muted col-12">Der Personalausweis wird zur Überprüfung der Eingaben genutzt. (optional)</small>
                     </div>
 
-                    <script>
-                        function updateLabel(event) {
-                            var fileName = event.target.files[0].name;
-                            if (event.target.nextElementSibling != null) {
-                                event.target.nextElementSibling.innerText = fileName;
-                            }
-                        }
-                    </script>
-
                     <hr />
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Telefon</label>
-                            <input name="p1_telephone" type="tel" class="form-control" placeholder="01234 567890">
+                            <input name="p1_telephone" type="tel" class="form-control" placeholder="01234 567890" autocomplete="home tel">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Mobil</label>
-                            <input name="p1_mobile" type="tel" class="form-control" placeholder="01234 567890">
+                            <input name="p1_mobile" type="tel" class="form-control" placeholder="01234 567890" autocomplete="mobile tel">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Fax</label>
-                            <input name="p1_fax" type="tel" class="form-control" placeholder="01234 567890">
+                            <input name="p1_fax" type="tel" class="form-control" placeholder="01234 567890" autocomplete="fax tel">
                         </div>
                     </div>
 
@@ -140,7 +124,7 @@
                         <div class="form-group col">
                             <label>E-Mail</label>
                             <div class="input-group">
-                                <input name="p1_email" type="email" class="form-control" placeholder="max.mustermann@mail.de">
+                                <input name="p1_email" type="email" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="email">
                                 <div class="input-group-append">
                                     <button id="copyMailButton" class="btn btn-secondary" type="button" onclick="toggleCC()">+</button>
                                 </div>
@@ -152,23 +136,13 @@
                         <div class="form-group col">
                             <label>E-Mail Weiterleitung</label>
                             <div class="input-group">
-                                <input name="p1_emailcopy" type="text" class="form-control" placeholder="arbeitsgeber@mail.de">
+                                <input name="p1_emailcopy" type="text" class="form-control" placeholder="arbeitsgeber@mail.de" autocomplete="off">
                             </div>
                         </div>
                     </div>
 
-                    <script>
-                        function toggleCC() {
-                            document.getElementById("copyMail").classList.toggle('d-none');
-                            if (document.getElementById("copyMail").classList.contains("d-none")) {
-                                document.getElementById("copyMailButton").innerText = "+"
-                            } else {
-                                document.getElementById("copyMailButton").innerText = "-"
-                            }
-                        }
-                    </script>
-
                     <small class="form-text text-muted mt-2"><b>Wichtig: </b>Es muss mindestens eine der Kontaktmöglichkeiten angegeben werden.</small>
+
                     <hr />
 
                     <div class="form-row">
@@ -186,49 +160,6 @@
 
                     <small class="form-text text-muted mt-2"><b>Wichtig: </b>Die Auswahl mehrerer Personen, führt zur <b>Poolung</b> der PCR-Tests. Falls Sie fragen dazu haben, wenden Sie sich gerne an einen Mitarbeiter.</small>
 
-                    <script>
-                        function configurePatient(enabled, index) {
-                            if (enabled) {
-                                document.getElementById("patient" + index).classList.remove('d-none');
-                                document.getElementsByName("p" + index + "_firstname")[0].classList.add('required');
-                                document.getElementsByName("p" + index + "_lastname")[0].classList.add('required');
-                                document.getElementsByName("p" + index + "_street")[0].classList.add('required');
-                                document.getElementsByName("p" + index + "_plz")[0].classList.add('required');
-                                document.getElementsByName("p" + index + "_city")[0].classList.add('required');
-                                document.getElementsByName("p" + index + "_birthdate")[0].classList.add('required');
-                            } else {
-                                document.getElementById("patient" + index).classList.add('d-none');
-                                document.getElementsByName("p" + index + "_firstname")[0].classList.remove('required');
-                                document.getElementsByName("p" + index + "_lastname")[0].classList.remove('required');
-                                document.getElementsByName("p" + index + "_street")[0].classList.remove('required');
-                                document.getElementsByName("p" + index + "_plz")[0].classList.remove('required');
-                                document.getElementsByName("p" + index + "_city")[0].classList.remove('required');
-                                document.getElementsByName("p" + index + "_birthdate")[0].classList.remove('required');
-                            }
-                        }
-
-                        function showPatients() {
-                            const selected = document.getElementById("morePatients").selectedIndex;
-                            configurePatient(false, 2);
-                            configurePatient(false, 3);
-                            configurePatient(false, 4);
-                            configurePatient(false, 5);
-
-                            switch (selected) {
-                                case 4:
-                                    configurePatient(true, 5);
-                                case 3:
-                                    configurePatient(true, 4);
-                                case 2:
-                                    configurePatient(true, 3);
-                                case 1:
-                                    configurePatient(true, 2);
-                                default:
-                                    break;
-                            }
-                        }
-                    </script>
-
                     <div id="patient2" class="card text-white bg-secondary my-3 d-none">
                         <div class="card-body">
                             <h5 class="card-title">2. Person</h5>
@@ -236,36 +167,36 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Vorname*</label>
-                                    <input name="p2_firstname" type="text" class="form-control" placeholder="Max">
+                                    <input name="p2_firstname" type="text" class="form-control" placeholder="Max" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Nachname*</label>
-                                    <input name="p2_lastname" type="text" class="form-control" placeholder="Mustermann">
+                                    <input name="p2_lastname" type="text" class="form-control" placeholder="Mustermann" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Straße, Hausnummer*</label>
-                                    <input name="p2_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                                    <input name="p2_street" type="text" class="form-control" placeholder="Musterstraße 1a" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-4">
                                     <label>PLZ*</label>
-                                    <input name="p2_plz" type="number" class="form-control" placeholder="12345">
+                                    <input name="p2_zip" type="number" class="form-control" placeholder="12345" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Ort*</label>
-                                    <input name="p2_city" type="text" class="form-control" placeholder="Musterstadt">
+                                    <input name="p2_address" type="text" class="form-control" placeholder="Musterstadt" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
-                                    <input name="p2_birthdate" type="date" class="form-control" value="2020-01-01">
+                                    <input name="p2_birthdate" type="date" class="form-control" value="2020-01-01" autocomplete="off">
                                 </div>
                             </div>
 
@@ -274,14 +205,14 @@
                                 <div class="form-group col">
                                     <label><small>Vorderseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p2_front" type="file" class="custom-file-input" id="inputGroupFile03" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <input name="p2_front" type="file" class="custom-file-input" id="inputGroupFile03" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                         <label class="custom-file-label" for="inputGroupFile03"></label>
                                     </div>
                                 </div>
                                 <div class="form-group col">
                                     <label><small>Rückseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p2_back" type="file" class="custom-file-input" id="inputGroupFile04" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <input name="p2_back" type="file" class="custom-file-input" id="inputGroupFile04" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                         <label class="custom-file-label" for="inputGroupFile04"></label>
                                     </div>
                                 </div>
@@ -292,21 +223,21 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Telefon</label>
-                                    <input name="p2_telephone" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p2_telephone" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Mobil</label>
-                                    <input name="p2_mobile" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p2_mobile" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Fax</label>
-                                    <input name="p2_fax" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p2_fax" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
@@ -314,7 +245,7 @@
                                 <div class="form-group col">
                                     <label>E-Mail</label>
                                     <div class="input-group">
-                                        <input name="p2_email" type="text" class="form-control" placeholder="max.mustermann@mail.de">
+                                        <input name="p2_email" type="text" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -329,36 +260,36 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Vorname*</label>
-                                    <input name="p3_firstname" type="text" class="form-control" placeholder="Max">
+                                    <input name="p3_firstname" type="text" class="form-control" placeholder="Max" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Nachname*</label>
-                                    <input name="p3_lastname" type="text" class="form-control" placeholder="Mustermann">
+                                    <input name="p3_lastname" type="text" class="form-control" placeholder="Mustermann" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Straße, Hausnummer*</label>
-                                    <input name="p3_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                                    <input name="p3_street" type="text" class="form-control" placeholder="Musterstraße 1a" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-4">
                                     <label>PLZ*</label>
-                                    <input name="p3_plz" type="number" class="form-control" placeholder="12345">
+                                    <input name="p3_zip" type="number" class="form-control" placeholder="12345" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Ort*</label>
-                                    <input name="p3_city" type="text" class="form-control" placeholder="Musterstadt">
+                                    <input name="p3_address" type="text" class="form-control" placeholder="Musterstadt" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
-                                    <input name="p3_birthdate" type="date" class="form-control" value="2020-01-01">
+                                    <input name="p3_birthdate" type="date" class="form-control" value="2020-01-01" autocomplete="off">
                                 </div>
                             </div>
 
@@ -367,14 +298,14 @@
                                 <div class="form-group col">
                                     <label><small>Vorderseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p3_front" type="file" class="custom-file-input" id="inputGroupFile05" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <input name="p3_front" type="file" class="custom-file-input" id="inputGroupFile05" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                         <label class="custom-file-label" for="inputGroupFile05"></label>
                                     </div>
                                 </div>
                                 <div class="form-group col">
                                     <label><small>Rückseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p3_back" type="file" class="custom-file-input" id="inputGroupFile06" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
+                                        <input name="p3_back" type="file" class="custom-file-input" id="inputGroupFile06" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
                                         <label class="custom-file-label" for="inputGroupFile06"></label>
                                     </div>
                                 </div>
@@ -385,21 +316,21 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Telefon</label>
-                                    <input name="p3_telephone" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p3_telephone" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Mobil</label>
-                                    <input name="p3_mobile" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p3_mobile" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Fax</label>
-                                    <input name="p3_fax" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p3_fax" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
@@ -407,7 +338,7 @@
                                 <div class="form-group col">
                                     <label>E-Mail</label>
                                     <div class="input-group">
-                                        <input name="p3_email" type="text" class="form-control" placeholder="max.mustermann@mail.de">
+                                        <input name="p3_email" type="text" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -422,36 +353,36 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Vorname*</label>
-                                    <input name="p4_firstname" type="text" class="form-control" placeholder="Max">
+                                    <input name="p4_firstname" type="text" class="form-control" placeholder="Max" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Nachname*</label>
-                                    <input name="p4_lastname" type="text" class="form-control" placeholder="Mustermann">
+                                    <input name="p4_lastname" type="text" class="form-control" placeholder="Mustermann" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Straße, Hausnummer*</label>
-                                    <input name="p4_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                                    <input name="p4_street" type="text" class="form-control" placeholder="Musterstraße 1a" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-4">
                                     <label>PLZ*</label>
-                                    <input name="p4_plz" type="number" class="form-control" placeholder="12345">
+                                    <input name="p4_zip" type="number" class="form-control" placeholder="12345" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Ort*</label>
-                                    <input name="p4_city" type="text" class="form-control" placeholder="Musterstadt">
+                                    <input name="p4_address" type="text" class="form-control" placeholder="Musterstadt" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
-                                    <input name="p4_birthdate" type="date" class="form-control" value="2020-01-01">
+                                    <input name="p4_birthdate" type="date" class="form-control" value="2020-01-01" autocomplete="off">
                                 </div>
                             </div>
 
@@ -460,15 +391,15 @@
                                 <div class="form-group col">
                                     <label><small>Vorderseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p4_front" type="file" class="custom-file-input" id="inputGroupFile06" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
-                                        <label class="custom-file-label" for="inputGroupFile06"></label>
+                                        <input name="p4_front" type="file" class="custom-file-input" id="inputGroupFile07" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
+                                        <label class="custom-file-label" for="inputGroupFile07"></label>
                                     </div>
                                 </div>
                                 <div class="form-group col">
                                     <label><small>Rückseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p4_back" type="file" class="custom-file-input" id="inputGroupFile07" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
-                                        <label class="custom-file-label" for="inputGroupFile07"></label>
+                                        <input name="p4_back" type="file" class="custom-file-input" id="inputGroupFile08" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
+                                        <label class="custom-file-label" for="inputGroupFile08"></label>
                                     </div>
                                 </div>
                             </div>
@@ -478,21 +409,21 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Telefon</label>
-                                    <input name="p4_telephone" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p4_telephone" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Mobil</label>
-                                    <input name="p4_mobile" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p4_mobile" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Fax</label>
-                                    <input name="p4_fax" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p4_fax" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
@@ -500,7 +431,7 @@
                                 <div class="form-group col">
                                     <label>E-Mail</label>
                                     <div class="input-group">
-                                        <input name="p4_email" type="text" class="form-control" placeholder="max.mustermann@mail.de">
+                                        <input name="p4_email" type="text" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -515,36 +446,36 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Vorname*</label>
-                                    <input name="p5_firstname" type="text" class="form-control" placeholder="Max">
+                                    <input name="p5_firstname" type="text" class="form-control" placeholder="Max" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Nachname*</label>
-                                    <input name="p5_lastname" type="text" class="form-control" placeholder="Mustermann">
+                                    <input name="p5_lastname" type="text" class="form-control" placeholder="Mustermann" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Straße, Hausnummer*</label>
-                                    <input name="p5_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                                    <input name="p5_street" type="text" class="form-control" placeholder="Musterstraße 1a" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-4">
                                     <label>PLZ*</label>
-                                    <input name="p5_plz" type="number" class="form-control" placeholder="12345">
+                                    <input name="p5_zip" type="number" class="form-control" placeholder="12345" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Ort*</label>
-                                    <input name="p5_city" type="text" class="form-control" placeholder="Musterstadt">
+                                    <input name="p5_address" type="text" class="form-control" placeholder="Musterstadt" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Geburtsdatum*</label>
-                                    <input name="p5_birthdate" type="date" class="form-control" value="2020-01-01">
+                                    <input name="p5_birthdate" type="date" class="form-control" value="2020-01-01" autocomplete="off">
                                 </div>
                             </div>
 
@@ -553,15 +484,15 @@
                                 <div class="form-group col">
                                     <label><small>Vorderseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p5_front" type="file" class="custom-file-input" id="inputGroupFile08" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
-                                        <label class="custom-file-label" for="inputGroupFile08"></label>
+                                        <input name="p5_front" type="file" class="custom-file-input" id="inputGroupFile09" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
+                                        <label class="custom-file-label" for="inputGroupFile09"></label>
                                     </div>
                                 </div>
                                 <div class="form-group col">
                                     <label><small>Rückseite</small></label>
                                     <div class="custom-file">
-                                        <input name="p5_back" type="file" class="custom-file-input" id="inputGroupFile09" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png">
-                                        <label class="custom-file-label" for="inputGroupFile09"></label>
+                                        <input name="p5_back" type="file" class="custom-file-input" id="inputGroupFile010" onChange="updateLabel(event)" accept=".jpg, .jpeg, .png" autocomplete="off">
+                                        <label class="custom-file-label" for="inputGroupFile10"></label>
                                     </div>
                                 </div>
                             </div>
@@ -571,21 +502,21 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Telefon</label>
-                                    <input name="p5_telephone" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p5_telephone" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Mobil</label>
-                                    <input name="p5_mobile" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p5_mobile" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Fax</label>
-                                    <input name="p5_fax" type="text" class="form-control" placeholder="01234 567890">
+                                    <input name="p5_fax" type="text" class="form-control" placeholder="01234 567890" autocomplete="off">
                                 </div>
                             </div>
 
@@ -593,7 +524,7 @@
                                 <div class="form-group col">
                                     <label>E-Mail</label>
                                     <div class="input-group">
-                                        <input name="p5_email" type="text" class="form-control" placeholder="max.mustermann@mail.de">
+                                        <input name="p5_email" type="text" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -605,7 +536,7 @@
 
                     <div class="form-row">
                         <div class="form-check ml-1">
-                            <input name="invoice_enabled" class="form-check-input required" type="checkbox" id="alternativeRechnungsAdresse" onclick="toggleRechnung()">
+                            <input name="invoice_enabled" class="form-check-input required" type="checkbox" id="alternativeRechnungsAdresse" onclick="toggleRechnung()" autocomplete="off">
                             <label class="form-check-label" for="alternativeRechnungsAdresse">
 								Abweichende Rechnungsadresse?
 							</label>
@@ -619,29 +550,29 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Vorname oder Firma*</label>
-                                    <input name="invoice_firstname" type="text" class="form-control" placeholder="Max">
+                                    <input name="invoice_firstname" type="text" class="form-control" placeholder="Max" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Nachname</label>
-                                    <input name="invoice_lastname" type="text" class="form-control" placeholder="(Mustermann)">
+                                    <input name="invoice_lastname" type="text" class="form-control" placeholder="(Mustermann)" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label>Straße, Hausnummer*</label>
-                                    <input name="invoice_street" type="text" class="form-control" placeholder="Musterstraße 1a">
+                                    <input name="invoice_street" type="text" class="form-control" placeholder="Musterstraße 1a" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-4">
                                     <label>PLZ</label>
-                                    <input name="invoice_plz" type="number" class="form-control" placeholder="12345">
+                                    <input name="invoice_zip" type="number" class="form-control" placeholder="12345" autocomplete="off">
                                 </div>
                                 <div class="form-group col">
                                     <label>Ort</label>
-                                    <input name="invoice_city" type="text" class="form-control" placeholder="Musterstadt">
+                                    <input name="invoice_address" type="text" class="form-control" placeholder="Musterstadt" autocomplete="off">
                                 </div>
                             </div>
 
@@ -649,7 +580,7 @@
                                 <div class="form-group col">
                                     <label>E-Mail*</label>
                                     <div class="input-group">
-                                        <input name="invoice_email" type="email" class="form-control" placeholder="max.mustermann@mail.de">
+                                        <input name="invoice_email" type="email" class="form-control" placeholder="max.mustermann@mail.de" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -657,22 +588,11 @@
                         </div>
                     </div>
 
-                    <script>
-                        function toggleRechnung() {
-                            document.getElementById("cardRechnung").classList.toggle('d-none');
-                            document.getElementsByName("invoice_firstname")[0].classList.toggle('required');
-                            document.getElementsByName("invoice_street")[0].classList.toggle('required');
-                            document.getElementsByName("invoice_plz")[0].classList.toggle('required');
-                            document.getElementsByName("invoice_city")[0].classList.toggle('required');
-                            document.getElementsByName("invoice_email")[0].classList.toggle('required');
-                        }
-                    </script>
-
                     <hr />
 
                     <div class="form-row">
                         <div class="form-check ml-1">
-                            <input name="datenschutz" class="form-check-input required" type="checkbox" id="datenschutz">
+                            <input name="datenschutz" class="form-check-input required" type="checkbox" id="datenschutz" autocomplete="off">
                             <label class="form-check-label" for="datenschutz">
 								Datenschutzbestimmungen akzeptieren
 							</label>
@@ -737,6 +657,32 @@
                 </div>
             </div>
         </div>
+	</div>
+
+	<div id="loginModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Geschützter Bereich</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+                </div>
+                <div class="modal-body">
+					<form action="#" name="auth" id="auth" class="px-2" autocomplete="off" onsubmit="doLogin(); return false">
+						<div class="form-group">
+						  <label for="loginEmail">Email:</label>
+						  <input type="email" class="form-control" id="login_email" placeholder="admin@mail.de" autocomplete="off" value="admin@tierarztpraxis-windhaus.de">
+						</div>
+						<div class="form-group">
+						  <label for="exampleDropdownFormPassword1">Passwort:</label>
+						  <input type="password" class="form-control" id="login_password" placeholder="********" autocomplete="off" value="password">
+						</div>
+						<button type="submit" class="btn btn-secondary">Anmelden</button>
+					  </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -744,13 +690,9 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropup">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-						Copyright 
-						<script>
-							const CurrentYear = new Date().getFullYear()
-							document.write(CurrentYear)
-						</script>
-						- Tierarztpraxis Windhaus</a>
+						Copyright <script>document.write(new Date().getFullYear())</script> - Tierarztpraxis Windhaus</a>
                     <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="javascript:login()">Login</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de">Homepage</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de/impressum/">Impressum</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de/datenschutzerklaerung/">Datenschutzerklärung</a>
@@ -760,100 +702,14 @@
         </div>
     </nav>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/signature.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <script>
-        firebase.initializeApp({
-            apiKey: "AIzaSyAKzR5AiJVZ3Iz5tJrWsLeBVDZJl2SSqLE",
-            authDomain: "coronaprototyp.firebaseapp.com",
-            databaseURL: "https://coronaprototyp.firebaseio.com",
-            projectId: "coronaprototyp",
-            storageBucket: "coronaprototyp.appspot.com",
-            messagingSenderId: "857488715212",
-            appId: "1:857488715212:web:763e73804d890e4bf40169"
-        });
-
-        function checkAndInsert() {
-            var result = true;
-            const form = document.forms["main"];
-            const array = [...form.elements];
-
-            var obj = array.reduce(function(dict, elem, index) {
-                if (elem.value == "") {
-                    if (elem.classList.contains("required")) {
-                        elem.classList.add("is-invalid");
-                        result = false;
-                    }
-                } else {
-                    elem.classList.remove("is-invalid");
-                    dict[elem.name] = elem.value;
-                }
-                return dict;
-            }, {});
-
-
-            if (!obj.p1_telephone && !obj.p1_mobile && !obj.p1_fax && !obj.p1_email) {
-                form["p1_telephone"].classList.add("is-invalid");
-                result = false;
-            }
-
-            const selected = document.getElementById("morePatients").selectedIndex;
-            switch (selected) {
-                case 3:
-                    delete obj.p5_birthdate;
-                    break;
-                case 2:
-                    delete obj.p5_birthdate;
-                    delete obj.p4_birthdate;
-                    break;
-                case 1:
-                    delete obj.p5_birthdate;
-                    delete obj.p4_birthdate;
-                    delete obj.p3_birthdate;
-                    break;
-                default:
-                    delete obj.morepatients;
-                    delete obj.p2_birthdate;
-                    delete obj.p3_birthdate;
-                    delete obj.p4_birthdate;
-                    delete obj.p5_birthdate;
-            }
-
-            if (!form["invoice_enabled"].checked) {
-                obj.invoice_enabled = false;
-            } else {
-                obj.invoice_enabled = true;
-            }
-
-            if (!form["datenschutz"].checked) {
-                obj.datenschutz = false;
-                result = false;
-            } else {
-                obj.datenschutz = true;
-            }
-
-            obj.signature = document.getElementById("sig-canvas").toDataURL();
-            console.log(obj);
-
-            obj["insertDate"] = (new Date()).toLocaleDateString();
-            obj["OS"] = navigator.platform;
-
-            if (result) {
-                const key = firebase.database().ref().child('requests').push().key;
-                firebase.database().ref('requests/' + key).set(obj);
-                $('#successModal').modal('show');
-                return false;
-            } else {
-                $('#errorModal').modal('show');
-                return false;
-            }
-        }
-    </script>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/firebase-app.min.js"></script>
+    <script src="assets/js/firebase-auth.min.js"></script>
+    <script src="assets/js/firebase-database.min.js"></script>
+    <script src="assets/js/einsendeschein.js"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

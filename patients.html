@@ -4,19 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="HandheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="HandheldFriendly" content="false">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.tierarztpraxis-windhaus.de/wp-content/uploads/2020/07/cropped-wt-icon-32x32.jpg">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
-    <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet">
-    <link href="https://raw.githubusercontent.com/Talv/x-editable/develop/dist/bootstrap4-editable/css/bootstrap-editable.css" rel="stylesheet">
-    <link href="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-editable.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Tierarztpraxis Windhaus - Corona Test</title>
 </head>
 
@@ -24,16 +23,20 @@
 
     <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
-            <img src="assets/logo.png" height="60" class="d-inline-block align-center mx-4">
+            <img src="assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
         </a>
     </nav>
 
 
     <div class="container d-lg-none">
-        test
+        <div class="alert alert-danger mt-4" role="alert">
+            Diese Webseite ist nicht für Mobilgeräte optimiert.</br>
+            <a href="javascript:history.back()" class="alert-link">Zurück zur vorherigen Webseite...</a>
+        </div>
     </div>
+
     <div class="container-fluid d-none d-lg-block">
-        <div class="card text-white bg-success my-3">
+        <div class="card my-3">
             <div class="card-header">
                 <b class="card-title">Neue Anmeldungen</b>
             </div>
@@ -96,32 +99,22 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
-    <script src="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/resizable/bootstrap-table-resizable.min.js"></script>
-    <script src="https://raw.githubusercontent.com/Talv/x-editable/develop/dist/bootstrap4-editable/js/bootstrap-editable.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <script>
-        firebase.initializeApp({
-            apiKey: "AIzaSyAKzR5AiJVZ3Iz5tJrWsLeBVDZJl2SSqLE",
-            authDomain: "coronaprototyp.firebaseapp.com",
-            databaseURL: "https://coronaprototyp.firebaseio.com",
-            projectId: "coronaprototyp",
-            storageBucket: "coronaprototyp.appspot.com",
-            messagingSenderId: "857488715212",
-            appId: "1:857488715212:web:763e73804d890e4bf40169"
-        });
-    </script>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-table.min.js"></script>
+    <script src="assets/js/bootstrap-table-sticky.min.js"></script>
+    <script src="assets/js/bootstrap-table-export.min.js"></script>
+    <script src="assets/js/jspdf.min.js"></script>
+    <script src="assets/js/autotable.min.js"></script>
+    <script src="assets/js/table-export.min.js"></script>
+    <script src="assets/js/bootstrap-resize.min.js"></script>
+    <script src="assets/js/resize.min.js"></script>
+    <script src="assets/js/editable.min.js"></script>
+    <script src="assets/js/firebase-app.min.js"></script>
+    <script src="assets/js/firebase-auth.min.js"></script>
+    <script src="assets/js/firebase-database.min.js"></script>
+    <script src="assets/js/patients.min.js"></script>
 </body>
 
 </html>
