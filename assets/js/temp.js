@@ -7,12 +7,3 @@ firebase.initializeApp({
     messagingSenderId: "857488715212",
     appId: "1:857488715212:web:763e73804d890e4bf40169"
 });
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (!user) {
-        firebase.auth().signOut();
-        window.location.href = "einsendeschein.html";
-    } else {
-        document.body.classList.remove("d-none");
-    }
-});
