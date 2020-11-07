@@ -14,7 +14,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-table.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-editable.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Tierarztpraxis Windhaus - Corona Test</title>
 </head>
@@ -41,26 +40,25 @@
                 <b class="card-title">Neue Anmeldungen</b>
             </div>
             <div class="card-body pt-1">
-                <table class="table table-bordered table-hover table-striped" id="table1" data-resizable="true" data-show-export="true" data-search-on-enter-key="true" data-search-accent-neutralise="true" data-search="true" data-id-field="id" data-select-item-name="id"
-                    data-toggle="table" data-click-to-select="true" data-show-columns="true">
-                    <thead class="sticky-header">
+                <table class="table table-bordered table-hover table-striped" id="table1">
+                    <thead>
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
                             <th data-field="id">ID</th>
-                            <th data-field="name">Name</th>
-                            <th data-field="price">Vorname</th>
-                            <th data-field="price">Straße, Hausnummer</th>
-                            <th data-field="price">PLZ</th>
-                            <th data-field="price">Ort</th>
-                            <th data-field="price">Geburtsdatum</th>
-                            <th data-field="price">Telefon</th>
-                            <th data-field="price">Mobil</th>
-                            <th data-field="price">Fax</th>
-                            <th data-field="price">Email</th>
-                            <th data-field="price">Email Kopie</th>
-                            <th data-field="price">Datum Entnahme</th>
-                            <th data-field="price">Datum Eingang</th>
-                            <th data-field="price">Datum Test</th>
+                            <th data-field="lname">Name</th>
+                            <th data-field="fname">Vorname</th>
+                            <th data-field="street">Straße, Hausnummer</th>
+                            <th data-field="plz">PLZ</th>
+                            <th data-field="city">Ort</th>
+                            <th data-field="birthday">Geburtsdatum</th>
+                            <th data-field="tel">Telefon</th>
+                            <th data-field="mobile">Mobil</th>
+                            <th data-field="fax">Fax</th>
+                            <th data-field="email">Email</th>
+                            <th data-field="emailCopy">Email Kopie</th>
+                            <th data-field="date1">Datum Entnahme</th>
+                            <th data-field="date2">Datum Eingang</th>
+                            <th data-field="date3">Datum Test</th>
                         </tr>
                     </thead>
                 </table>
@@ -72,26 +70,25 @@
                 <b class="card-title">Patienten Bestandsliste</b>
             </div>
             <div class="card-body pt-1">
-                <table class="table table-bordered table-hover table-striped" id="table2" data-resizable="true" data-show-export="true" data-search-on-enter-key="true" data-search-accent-neutralise="true" data-search="true" data-id-field="id" data-select-item-name="id"
-                    data-toggle="table" data-click-to-select="true" data-show-columns="true">
-                    <thead class="sticky-header">
+                <table class="table table-bordered table-hover table-striped" id="table2">
+                    <thead>
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
                             <th data-field="id">ID</th>
-                            <th data-field="name">Name</th>
-                            <th data-field="price">Vorname</th>
-                            <th data-field="price">Straße, Hausnummer</th>
-                            <th data-field="price">PLZ</th>
-                            <th data-field="price">Ort</th>
-                            <th data-field="price">Geburtsdatum</th>
-                            <th data-field="price">Telefon</th>
-                            <th data-field="price">Mobil</th>
-                            <th data-field="price">Fax</th>
-                            <th data-field="price">Email</th>
-                            <th data-field="price">Email Kopie</th>
-                            <th data-field="price">Datum Entnahme</th>
-                            <th data-field="price">Datum Eingang</th>
-                            <th data-field="price">Datum Test</th>
+                            <th data-field="lname">Name</th>
+                            <th data-field="fname">Vorname</th>
+                            <th data-field="street">Straße, Hausnummer</th>
+                            <th data-field="plz">PLZ</th>
+                            <th data-field="city">Ort</th>
+                            <th data-field="birthday">Geburtsdatum</th>
+                            <th data-field="tel">Telefon</th>
+                            <th data-field="mobile">Mobil</th>
+                            <th data-field="fax">Fax</th>
+                            <th data-field="email">Email</th>
+                            <th data-field="emailCopy">Email Kopie</th>
+                            <th data-field="date1">Datum Entnahme</th>
+                            <th data-field="date2">Datum Eingang</th>
+                            <th data-field="date3">Datum Test</th>
                         </tr>
                     </thead>
                 </table>
@@ -102,15 +99,8 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/bootstrap-table.min.js"></script>
-    <script src="assets/js/bootstrap-table-sticky.min.js"></script>
-    <script src="assets/js/bootstrap-table-export.min.js"></script>
-    <script src="assets/js/jspdf.min.js"></script>
-    <script src="assets/js/autotable.min.js"></script>
-    <script src="assets/js/table-export.min.js"></script>
-    <script src="assets/js/bootstrap-resize.min.js"></script>
-    <script src="assets/js/resize.min.js"></script>
-    <script src="assets/js/editable.min.js"></script>
+    <script src="assets/js/bootstrap-tables.min.js"></script>
+    <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/firebase-app.min.js"></script>
     <script src="assets/js/firebase-auth.min.js"></script>
     <script src="assets/js/firebase-database.min.js"></script>
