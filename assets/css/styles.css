@@ -62,3 +62,13 @@ body {
         width: auto;
     }
 }
+
+th,
+td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.bold {
+    font-weight: 700;
+}
