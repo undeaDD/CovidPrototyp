@@ -151,177 +151,179 @@ canvas.width = canvas.offsetWidth;
 })();
 
 firebase.initializeApp({
-	apiKey: "AIzaSyAKzR5AiJVZ3Iz5tJrWsLeBVDZJl2SSqLE",
-	authDomain: "coronaprototyp.firebaseapp.com",
-	databaseURL: "https://coronaprototyp.firebaseio.com",
-	projectId: "coronaprototyp",
-	storageBucket: "coronaprototyp.appspot.com",
-	messagingSenderId: "857488715212",
-	appId: "1:857488715212:web:763e73804d890e4bf40169"
+    apiKey: "AIzaSyAKzR5AiJVZ3Iz5tJrWsLeBVDZJl2SSqLE",
+    authDomain: "coronaprototyp.firebaseapp.com",
+    databaseURL: "https://coronaprototyp.firebaseio.com",
+    projectId: "coronaprototyp",
+    storageBucket: "coronaprototyp.appspot.com",
+    messagingSenderId: "857488715212",
+    appId: "1:857488715212:web:763e73804d890e4bf40169"
 });
 
 function checkAndInsert() {
-	var result = true;
-	const form = document.forms["main"];
-	const array = [...form.elements];
+    var result = true;
+    const form = document.forms["main"];
+    const array = [...form.elements];
 
-	var obj = array.reduce(function(dict, elem, index) {
-		if (elem.value == "") {
-			if (elem.classList.contains("required")) {
-				elem.classList.add("is-invalid");
-				result = false;
-			}
-		} else {
-			elem.classList.remove("is-invalid");
-			dict[elem.name] = elem.value;
-		}
-		return dict;
-	}, {});
+    var obj = array.reduce(function(dict, elem, index) {
+        if (elem.type == "date") {
+            dict[elem.name] = elem.valueAsDate.toLocaleDateString();
+        } else if (elem.value == "") {
+            if (elem.classList.contains("required")) {
+                elem.classList.add("is-invalid");
+                result = false;
+            }
+        } else {
+            elem.classList.remove("is-invalid");
+            dict[elem.name] = elem.value;
+        }
+        return dict;
+    }, {});
 
 
-	if (!obj.p1_telephone && !obj.p1_mobile && !obj.p1_fax && !obj.p1_email) {
-		form["p1_telephone"].classList.add("is-invalid");
-		result = false;
-	}
+    if (!obj.p1_telephone && !obj.p1_mobile && !obj.p1_fax && !obj.p1_email) {
+        form["p1_telephone"].classList.add("is-invalid");
+        result = false;
+    }
 
-	const selected = document.getElementById("morePatients").selectedIndex;
-	switch (selected) {
-		case 3:
-			delete obj.p5_birthdate;
-			break;
-		case 2:
-			delete obj.p5_birthdate;
-			delete obj.p4_birthdate;
-			break;
-		case 1:
-			delete obj.p5_birthdate;
-			delete obj.p4_birthdate;
-			delete obj.p3_birthdate;
-			break;
-		default:
-			delete obj.morepatients;
-			delete obj.p2_birthdate;
-			delete obj.p3_birthdate;
-			delete obj.p4_birthdate;
-			delete obj.p5_birthdate;
-	}
+    const selected = document.getElementById("morePatients").selectedIndex;
+    switch (selected) {
+        case 3:
+            delete obj.p5_birthdate;
+            break;
+        case 2:
+            delete obj.p5_birthdate;
+            delete obj.p4_birthdate;
+            break;
+        case 1:
+            delete obj.p5_birthdate;
+            delete obj.p4_birthdate;
+            delete obj.p3_birthdate;
+            break;
+        default:
+            obj.morepatients = "0";
+            delete obj.p2_birthdate;
+            delete obj.p3_birthdate;
+            delete obj.p4_birthdate;
+            delete obj.p5_birthdate;
+    }
 
-	if (!form["invoice_enabled"].checked) {
-		obj.invoice_enabled = false;
-	} else {
-		obj.invoice_enabled = true;
-	}
+    if (!form["invoice_enabled"].checked) {
+        obj.invoice_enabled = false;
+    } else {
+        obj.invoice_enabled = true;
+    }
 
-	if (!form["datenschutz"].checked) {
-		obj.datenschutz = false;
-		result = false;
-	} else {
-		obj.datenschutz = true;
-	}
+    if (!form["datenschutz"].checked) {
+        obj.datenschutz = false;
+        result = false;
+    } else {
+        obj.datenschutz = true;
+    }
 
-	obj.signature = document.getElementById("sig-canvas").toDataURL();
+    obj.signature = document.getElementById("sig-canvas").toDataURL();
 
-	obj["insertDate"] = (new Date()).toLocaleDateString();
-	obj["OS"] = navigator.platform;
+    obj["insertDate"] = (new Date()).toLocaleDateString();
+    obj["OS"] = navigator.platform;
 
-	if (result) {
-		const key = firebase.database().ref().child('requests').push().key;
-		firebase.database().ref('requests/' + key).set(obj);
-		$('#successModal').modal('show');
-		return false;
-	} else {
-		$('#errorModal').modal('show');
-		return false;
-	}
+    if (result) {
+        const key = firebase.database().ref().child('requests').push().key;
+        firebase.database().ref('requests/' + key).set(obj);
+        $('#successModal').modal('show');
+        return false;
+    } else {
+        $('#errorModal').modal('show');
+        return false;
+    }
 }
 
 function toggleRechnung() {
-	document.getElementById("cardRechnung").classList.toggle('d-none');
-	document.getElementsByName("invoice_firstname")[0].classList.toggle('required');
-	document.getElementsByName("invoice_street")[0].classList.toggle('required');
-	document.getElementsByName("invoice_zip")[0].classList.toggle('required');
-	document.getElementsByName("invoice_address")[0].classList.toggle('required');
-	document.getElementsByName("invoice_email")[0].classList.toggle('required');
+    document.getElementById("cardRechnung").classList.toggle('d-none');
+    document.getElementsByName("invoice_firstname")[0].classList.toggle('required');
+    document.getElementsByName("invoice_street")[0].classList.toggle('required');
+    document.getElementsByName("invoice_zip")[0].classList.toggle('required');
+    document.getElementsByName("invoice_address")[0].classList.toggle('required');
+    document.getElementsByName("invoice_email")[0].classList.toggle('required');
 }
 
 function configurePatient(enabled, index) {
-	if (enabled) {
-		document.getElementById("patient" + index).classList.remove('d-none');
-		document.getElementsByName("p" + index + "_firstname")[0].classList.add('required');
-		document.getElementsByName("p" + index + "_lastname")[0].classList.add('required');
-		document.getElementsByName("p" + index + "_street")[0].classList.add('required');
-		document.getElementsByName("p" + index + "_zip")[0].classList.add('required');
-		document.getElementsByName("p" + index + "_address")[0].classList.add('required');
-		document.getElementsByName("p" + index + "_birthdate")[0].classList.add('required');
-	} else {
-		document.getElementById("patient" + index).classList.add('d-none');
-		document.getElementsByName("p" + index + "_firstname")[0].classList.remove('required');
-		document.getElementsByName("p" + index + "_lastname")[0].classList.remove('required');
-		document.getElementsByName("p" + index + "_street")[0].classList.remove('required');
-		document.getElementsByName("p" + index + "_zip")[0].classList.remove('required');
-		document.getElementsByName("p" + index + "_address")[0].classList.remove('required');
-		document.getElementsByName("p" + index + "_birthdate")[0].classList.remove('required');
-	}
+    if (enabled) {
+        document.getElementById("patient" + index).classList.remove('d-none');
+        document.getElementsByName("p" + index + "_firstname")[0].classList.add('required');
+        document.getElementsByName("p" + index + "_lastname")[0].classList.add('required');
+        document.getElementsByName("p" + index + "_street")[0].classList.add('required');
+        document.getElementsByName("p" + index + "_zip")[0].classList.add('required');
+        document.getElementsByName("p" + index + "_address")[0].classList.add('required');
+        document.getElementsByName("p" + index + "_birthdate")[0].classList.add('required');
+    } else {
+        document.getElementById("patient" + index).classList.add('d-none');
+        document.getElementsByName("p" + index + "_firstname")[0].classList.remove('required');
+        document.getElementsByName("p" + index + "_lastname")[0].classList.remove('required');
+        document.getElementsByName("p" + index + "_street")[0].classList.remove('required');
+        document.getElementsByName("p" + index + "_zip")[0].classList.remove('required');
+        document.getElementsByName("p" + index + "_address")[0].classList.remove('required');
+        document.getElementsByName("p" + index + "_birthdate")[0].classList.remove('required');
+    }
 }
 
 function showPatients() {
-	const selected = document.getElementById("morePatients").selectedIndex;
-	configurePatient(false, 2);
-	configurePatient(false, 3);
-	configurePatient(false, 4);
-	configurePatient(false, 5);
+    const selected = document.getElementById("morePatients").selectedIndex;
+    configurePatient(false, 2);
+    configurePatient(false, 3);
+    configurePatient(false, 4);
+    configurePatient(false, 5);
 
-	switch (selected) {
-		case 4:
-			configurePatient(true, 5);
-		case 3:
-			configurePatient(true, 4);
-		case 2:
-			configurePatient(true, 3);
-		case 1:
-			configurePatient(true, 2);
-		default:
-			break;
-	}
+    switch (selected) {
+        case 4:
+            configurePatient(true, 5);
+        case 3:
+            configurePatient(true, 4);
+        case 2:
+            configurePatient(true, 3);
+        case 1:
+            configurePatient(true, 2);
+        default:
+            break;
+    }
 }
 
 function toggleCC() {
-	document.getElementById("copyMail").classList.toggle('d-none');
-	if (document.getElementById("copyMail").classList.contains("d-none")) {
-		document.getElementById("copyMailButton").innerText = "+"
-	} else {
-		document.getElementById("copyMailButton").innerText = "-"
-	}
+    document.getElementById("copyMail").classList.toggle('d-none');
+    if (document.getElementById("copyMail").classList.contains("d-none")) {
+        document.getElementById("copyMailButton").innerText = "+"
+    } else {
+        document.getElementById("copyMailButton").innerText = "-"
+    }
 }
 
 function updateLabel(event) {
-	var fileName = event.target.files[0].name;
-	if (event.target.nextElementSibling != null) {
-		event.target.nextElementSibling.innerText = fileName;
-	}
+    var fileName = event.target.files[0].name;
+    if (event.target.nextElementSibling != null) {
+        event.target.nextElementSibling.innerText = fileName;
+    }
 }
 
 function googleTranslateElementInit() {
-	new google.translate.TranslateElement({
-		pageLanguage: 'de'
-	}, 'google_translate_element');
+    new google.translate.TranslateElement({
+        pageLanguage: 'de'
+    }, 'google_translate_element');
 
-	jQuery('.goog-logo-link').css('display', 'none');
-	jQuery('.goog-te-gadget').css('font-size', '0');
+    jQuery('.goog-logo-link').css('display', 'none');
+    jQuery('.goog-te-gadget').css('font-size', '0');
 }
 
 function login() {
-	$('#loginModal').modal('show');
+    $('#loginModal').modal('show');
 }
 
 function doLogin() {
-	let email = document.getElementById("login_email").value;
-	let password = document.getElementById("login_password").value;
-	firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-		console.log("authenticated");
-		window.location.href = "patients.html";
-	}).catch(function(error) {
-		console.log(error);
-	});
-	return false;
+    let email = document.getElementById("login_email").value;
+    let password = document.getElementById("login_password").value;
+    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+        console.log("authenticated");
+        window.location.href = "patients.html";
+    }).catch(function(error) {
+        console.log(error);
+    });
+    return false;
 }

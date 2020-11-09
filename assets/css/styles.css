@@ -22,6 +22,7 @@ body {
 }
 
 .btn-secondary {
+    color: white !important;
     background-color: #BAAC9E !important;
     border-color: #BAAC9E !important;
 }
@@ -71,4 +72,34 @@ td {
 
 .bold {
     font-weight: 700;
+}
+
+::selection {
+    color: white;
+    background: #BAAC9E;
+}
+
+a:link {
+    color: #BAAC9E;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: #BAAC9E;
+}
+
+
+/* selected link */
+
+a:active {
+    color: #BAAC9E;
+}
+
+table.dataTable td.focus {
+    outline: 3px solid #BAAC9E;
+    outline-offset: -4px;
+    background-color: white !important;
+    box-shadow: none !important;
 }
