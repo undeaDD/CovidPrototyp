@@ -144,10 +144,6 @@ canvas.width = canvas.offsetWidth;
         ctx.strokeStyle = "#BAAC9E";
         ctx.lineWidth = 2;
     });
-
-    // Set up the UI
-    var sigText = document.getElementById("sig-dataUrl");
-    var sigImage = document.getElementById("sig-image");
 })();
 
 firebase.initializeApp({
@@ -160,7 +156,7 @@ firebase.initializeApp({
     appId: "1:857488715212:web:763e73804d890e4bf40169"
 });
 
-function checkAndInsert() {
+async function checkAndInsert() {
     var result = true;
     const form = document.forms["main"];
     const array = [...form.elements];
@@ -185,6 +181,27 @@ function checkAndInsert() {
         form["p1_telephone"].classList.add("is-invalid");
         result = false;
     }
+
+    try {
+        for (let i = 1; i < 6; i++) {
+            const temp1 = form["p" + i + "_front"];
+            if (temp1.files.length > 0) {
+                obj["p" + i + "_front"] = await readFile(temp1.files[0]);
+            } else {
+                delete obj["p" + i + "_front"];
+            }
+
+            const temp2 = form["p" + i + "_back"];
+            if (temp2.files.length > 0) {
+                obj["p" + i + "_back"] = await readFile(temp2.files[0]);
+            } else {
+                delete obj["p" + i + "_back"];
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+    console.log(obj);
 
     const selected = document.getElementById("morePatients").selectedIndex;
     switch (selected) {
@@ -230,11 +247,17 @@ function checkAndInsert() {
         const key = firebase.database().ref().child('requests').push().key;
         firebase.database().ref('requests/' + key).set(obj);
         $('#successModal').modal('show');
-        return false;
     } else {
         $('#errorModal').modal('show');
-        return false;
     }
+}
+
+async function readFile(file) {
+    return await new Promise((resolve) => {
+        let fileReader = new FileReader();
+        fileReader.onload = (e) => resolve(fileReader.result);
+        fileReader.readAsDataURL(file);
+    });
 }
 
 function toggleRechnung() {

@@ -14,7 +14,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-table.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
     <title>Tierarztpraxis Windhaus - Corona Test</title>
 </head>
 
@@ -24,6 +26,10 @@
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
             <img src="assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
         </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+            </ul>
+        </div>
     </nav>
 
 
@@ -56,6 +62,7 @@
                             <th>Email</th>
                             <th>Email Kopie</th>
                             <th>Datum Eingang</th>
+                            <th>Anhänge</th>
                         </tr>
                     </thead>
                 </table>
@@ -82,9 +89,11 @@
                             <th>Fax</th>
                             <th>Email</th>
                             <th>Email Kopie</th>
+                            <th>Ausweisnummer</th>
                             <th>Datum Entnahme</th>
                             <th>Datum Eingang</th>
                             <th>Datum Test</th>
+                            <th>Anhänge</th>
                         </tr>
                     </thead>
                 </table>
@@ -99,6 +108,9 @@
     <script src="assets/js/firebase-app.min.js"></script>
     <script src="assets/js/firebase-auth.min.js"></script>
     <script src="assets/js/firebase-database.min.js"></script>
+    <script src="assets/js/lightbox.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.bootstrap4.min.js"></script>
     <script src="assets/js/patients.min.js"></script>
 </body>
 

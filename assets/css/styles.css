@@ -21,6 +21,11 @@ body {
     background-color: #BAAC9E !important;
 }
 
+.btn-primary,
+.btn-danger {
+    color: white !important;
+}
+
 .btn-secondary {
     color: white !important;
     background-color: #BAAC9E !important;
