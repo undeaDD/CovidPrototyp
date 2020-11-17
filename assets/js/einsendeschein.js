@@ -198,31 +198,54 @@ async function checkAndInsert() {
                 delete obj["p" + i + "_back"];
             }
         }
-    } catch (error) {
-        console.error(error);
-    }
-    console.log(obj);
+    } catch (error) {}
 
     const selected = document.getElementById("morePatients").selectedIndex;
     switch (selected) {
         case 3:
             delete obj.p5_birthdate;
+            delete obj.p5_birthdate;
+            delete obj.p5_email_verify;
             break;
         case 2:
-            delete obj.p5_birthdate;
             delete obj.p4_birthdate;
+            delete obj.p4_email_verify;
+            delete obj.p5_birthdate;
+            delete obj.p5_email_verify;
             break;
         case 1:
-            delete obj.p5_birthdate;
-            delete obj.p4_birthdate;
             delete obj.p3_birthdate;
+            delete obj.p3_email_verify;
+            delete obj.p4_birthdate;
+            delete obj.p4_email_verify;
+            delete obj.p5_birthdate;
+            delete obj.p5_email_verify;
             break;
         default:
             obj.morepatients = "0";
             delete obj.p2_birthdate;
+            delete obj.p2_email_verify;
             delete obj.p3_birthdate;
+            delete obj.p3_email_verify;
             delete obj.p4_birthdate;
+            delete obj.p4_email_verify;
             delete obj.p5_birthdate;
+            delete obj.p5_email_verify;
+    }
+
+
+    for (let i = 1; i < 6; i++) {
+        try {
+            const temp1 = obj["p" + i + "_email_verify"];
+            if (temp1) {
+                if (temp1 != obj["p" + i + "_email"]) {
+                    form["p" + i + "_email_verify"].classList.add("is-invalid");
+                    result = false;
+                } else {
+                    delete obj["p" + i + "_email_verify"];
+                }
+            }
+        } catch (error) {}
     }
 
     if (!form["invoice_enabled"].checked) {
@@ -243,6 +266,7 @@ async function checkAndInsert() {
     obj["insertDate"] = (new Date()).toLocaleDateString();
     obj["OS"] = navigator.platform;
 
+    console.log(obj);
     if (result) {
         const key = firebase.database().ref().child('requests').push().key;
         firebase.database().ref('requests/' + key).set(obj);
