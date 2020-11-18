@@ -112,3 +112,10 @@ table.dataTable td.focus {
 .customButton {
     border-radius: .25rem !important;
 }
+
+.striped {
+	background-color: rgb(0, 0, 0, 0.075) !important;
+}
+
+::selection { background: transparent; color: inherit !important;}
+::-moz-selection { background: transparent; color: inherit !important; }
