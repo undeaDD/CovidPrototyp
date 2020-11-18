@@ -178,7 +178,7 @@ $(function() {
                             $(row).addClass('striped');
                         }
 					},
-					"order": [[1, 'desc']],
+					"order": [[1, 'asc']],
                     "columns": [
 					{
 						"data": "actions",
@@ -186,12 +186,16 @@ $(function() {
 						"orderable": false,
 						"searchable": false,
                         "render": function(data, type, row, meta) {
-                            return "<a href='#'><i class='las la-check-square la-lg mx-3'></i></a><a href='#'><i class='las la-trash-alt la-lg mr-2'></i></a>";
+							if (row.id.endsWith(".1")) {
+								return "<a href='#'><img height='30' class='mr-2' src='https://img.icons8.com/ios-glyphs/30/BAAC9E/add--v1.png'/></a>" +
+								"<a href='#'><img height='30' src='https://img.icons8.com/ios-glyphs/30/FF0000/delete-forever.png'/></a>";
+							}
+							return "";
                         },
 					}, {
                         "data": "id",
                         "className": "bold",
-                        "orderable": true,
+                        "orderable": false,
 						"searchable": false,
                     }, {
                         "data": "lname",
@@ -277,15 +281,15 @@ $(function() {
                         "render": function(data, type, row, meta) {
                             var temp = "";
                             if (row.signature) {
-                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/signature.png"/></a>';
+                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/signature.png"/></a>';
                             }
 
                             if (row.front) {
-                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
                             }
 
                             if (row.back) {
-                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
                             }
 
                             return temp
