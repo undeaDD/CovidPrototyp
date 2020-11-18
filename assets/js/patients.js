@@ -222,7 +222,7 @@ $(function() {
                             if (type === 'display' && (typeof data !== 'undefined')) {
                                 return '<a href="tel:' + data + '">' + data + '</a>';
                             } else {
-                                return '<span class="text-center">' + data + '</span>';
+                                return data;
                             }
                         },
                         "orderable": false
@@ -373,7 +373,7 @@ $(function() {
                             if (type === 'display' && data != "-") {
                                 return '<a href="tel:' + data + '">' + data + '</a>';
                             } else {
-                                return '<span class="text-center">' + data + '</span>';
+                                return data;
                             }
                         },
                         "orderable": false
