@@ -108,3 +108,7 @@ table.dataTable td.focus {
     background-color: white !important;
     box-shadow: none !important;
 }
+
+.customButton {
+    border-radius: .25rem !important;
+}

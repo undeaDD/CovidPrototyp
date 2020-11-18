@@ -68,6 +68,7 @@ $(function() {
                 var table1 = $('#table1').DataTable({
                     "dom": "<'row'<'col-6 'B><'col-6'f>>" +
                         "<'row'<'col-sm-12'tr>>",
+                    "blurable": false,
                     "destroy": true,
                     "paging": false,
                     "ordering": true,
@@ -83,10 +84,11 @@ $(function() {
                         "emptyTable": "Keine Einträge vorhanden",
                     },
                     buttons: [{
-                        text: 'Neuer Eintrag',
+                        text: '<i class="las la-plus mr-2"></i>Neuer Eintrag',
                         action: function(e, dt, node, config) {
                             console.log("test");
-                        }
+                        },
+                        className: 'customButton mr-2'
                     }],
                     "columns": [
                         { "data": "id", "className": "bold", "orderable": true },
@@ -195,6 +197,7 @@ $(function() {
                 var table2 = $('#table2').DataTable({
                     "dom": "<'row'<'col-6 'B><'col-6'f>>" +
                         "<'row'<'col-sm-12'tr>>",
+                    "blurable": false,
                     "destroy": true,
                     "paging": false,
                     "ordering": true,
@@ -210,11 +213,18 @@ $(function() {
                         "emptyTable": "Keine Einträge vorhanden",
                     },
                     buttons: [{
-                        text: 'Neuer Eintrag',
-                        action: function(e, dt, node, config) {
-                            console.log("test");
+                            text: '<i class="las la-plus mr-2"></i>Neuer Eintrag',
+                            action: function(e, dt, node, config) {
+                                console.log("test");
+                            },
+                            className: 'customButton mr-2'
+                        },
+                        {
+                            extend: 'csvHtml5',
+                            text: '<i class="las la-file-csv mr-2"></i>Für Excel Exportieren',
+                            className: 'customButton mr-2'
                         }
-                    }],
+                    ],
                     "columns": [
                         { "data": "id", "className": "bold", "orderable": true },
                         { "data": "lname", "orderable": false },
@@ -331,6 +341,8 @@ $(function() {
                 table2.columns.adjust().draw();
                 table2.fixedHeader.adjust().draw();
             });
+
         }
     });
+
 });
