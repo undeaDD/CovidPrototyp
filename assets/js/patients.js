@@ -27,6 +27,20 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     });
 });
 
+window.addEventListener('message', function(message) {
+	if( message.data.type == "modal.close"){
+		$('#addModal').modal('hide');
+	}
+});
+
+function approveEntry(row) {
+	alert("'Anmeldungen abspeichern' wurde noch nicht vollständig implementiert...");
+}
+
+function removeEntry(row) {
+	firebase.database().ref("requests/" + row).remove();
+}
+
 $(function() {
 
     $(window).resize(function() {
@@ -124,6 +138,7 @@ $(function() {
                             });
                         default:
                             temp.push({
+								key: elem.id,
                                 id: count + ".1",
                                 lname: elem.p1_lastname,
                                 fname: elem.p1_firstname,
@@ -167,9 +182,12 @@ $(function() {
                         "emptyTable": "Keine Einträge vorhanden",
                     },
                     "buttons": [{
-                        text: '<i class="las la-plus mr-2"></i>Neuer Eintrag',
+                        text: "<img height='21' class='mr-2' style='margin-top: -4px;' src='assets/img/file-plus.png'/>Neuer Eintrag",
                         action: function(e, dt, node, config) {
-                            console.log("test");
+							$("#addIFrame").prop('src', "einsendeschein.html");
+						    $('#addModal').modal({
+								show: true
+							});
                         },
                         className: 'customButton mr-2'
                     }],
@@ -187,15 +205,15 @@ $(function() {
 						"searchable": false,
                         "render": function(data, type, row, meta) {
 							if (row.id.endsWith(".1")) {
-								return "<a href='#'><img height='30' class='mr-2' src='https://img.icons8.com/ios-glyphs/30/BAAC9E/add--v1.png'/></a>" +
-								"<a href='#'><img height='30' src='https://img.icons8.com/ios-glyphs/30/FF0000/delete-forever.png'/></a>";
+								return "<a onclick='approveEntry(\"" + row.key + "\")'><img height='21' class='mr-3' src='assets/img/check-circle.png'/></a>" +
+								"<a onclick='removeEntry(\"" + row.key + "\")'><img height='21' src='assets/img/trash.png'/></a>";
 							}
 							return "";
                         },
 					}, {
                         "data": "id",
                         "className": "bold",
-                        "orderable": false,
+                        "orderable": true,
 						"searchable": false,
                     }, {
                         "data": "lname",
@@ -281,15 +299,15 @@ $(function() {
                         "render": function(data, type, row, meta) {
                             var temp = "";
                             if (row.signature) {
-                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/signature.png"/></a>';
+                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/signature.png"/></a>';
                             }
 
                             if (row.front) {
-                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/id-card.png"/></a>';
                             }
 
                             if (row.back) {
-                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="30" src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/id-card.png"/></a>';
                             }
 
                             return temp
@@ -333,7 +351,8 @@ $(function() {
                     "searching": true,
                     "fixedHeader": true,
                     "scrollX": true,
-                    "autoWidth": false,
+					"autoWidth": false,
+					"order": [[0, 'desc']],
                     "language": {
                         "search": "",
                         "searchPlaceholder": "Nach Eintrag suchen",

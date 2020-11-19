@@ -264,13 +264,15 @@ async function checkAndInsert() {
     obj.signature = document.getElementById("sig-canvas").toDataURL();
 
     obj["insertDate"] = (new Date()).toLocaleDateString();
-    obj["OS"] = navigator.platform;
+	obj["OS"] = navigator.platform;
 
-    console.log(obj);
     if (result) {
         const key = firebase.database().ref().child('requests').push().key;
         firebase.database().ref('requests/' + key).set(obj);
-        $('#successModal').modal('show');
+		$('#successModal').modal('show');
+		parent.postMessage({
+			type:"modal.close"
+		},"*");
     } else {
         $('#errorModal').modal('show');
     }
