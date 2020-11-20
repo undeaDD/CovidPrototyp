@@ -21,7 +21,7 @@
 
 <body>
 
-    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
+    <nav id="headerNav" class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
             <img src="assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
         </a>
@@ -39,7 +39,7 @@
     <div class="container">
 
         <div class="card my-3">
-            <img class="card-img-top bg-secondary" src="assets/img/header.png">
+            <img id="cardImage" class="card-img-top bg-secondary" src="assets/img/header.png">
             <div class="card-body">
                 <form action="#" name="main" autocomplete="on" onsubmit="checkAndInsert(); return false">
                     <div class="form-row">
@@ -698,14 +698,14 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav id="footerNav" class="navbar navbar-expand navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="topNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropup">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
 						Copyright <script>document.write(new Date().getFullYear())</script> - Tierarztpraxis Windhaus</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="javascript:login()">Login</a>
+                        <a class="dropdown-item" href="admin/login.html">Login</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de">Homepage</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de/impressum/">Impressum</a>
                         <a class="dropdown-item" href="https://www.tierarztpraxis-windhaus.de/datenschutzerklaerung/">Datenschutzerklärung</a>

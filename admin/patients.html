@@ -11,26 +11,38 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-table.min.css">
-    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../assets/css/lightbox.min.css">
+	<link rel="stylesheet" href="../assets/css/fixedColumns.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-    <title>Tierarztpraxis Windhaus - Corona Test</title>
+    <link rel="stylesheet" href="../assets/css/styles.min.css">
+    <title>Tierarztpraxis Windhaus - Patientenliste</title>
 </head>
 
 <body class="d-none">
 
     <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: rgba(186,172,158,0.81);">
         <a class="navbar-brand" href="https://www.tierarztpraxis-windhaus.de/">
-            <img src="assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-            </ul>
-        </div>
+            <img src="../assets/img/logo.png" height="60" class="d-inline-block align-center mx-4">
+		</a>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="ml-auto navbar-nav d-none d-lg-flex">
+			  <li class="nav-item">
+					<a class="nav-link mr-3" href="../einsendeschein.html"><img height='21' class='mr-2' style='margin-top: -8px;' src='../assets/img/file-signature.png'/>Einsendeschein</a>
+			  </li>
+			  <li class="nav-item active">
+				<a class="nav-link mr-3"><img height='21' class='mr-2' style='margin-top: -8px;' src='../assets/img/user-injured.png'/>Patienten</a>
+			  </li>
+			  <li class="nav-item mr-3">
+				<a class="nav-link" href="cavities.html" ><img height='21' class='mr-2' style='margin-top: -4px;' src='../assets/img/table.png'/>Kavitätenpläne</a>
+			  </li>
+			  <li class="nav-item mr-2">
+				<a class="nav-link" onclick="signout()"><img height='21' class='mr-2' style='margin-top: -2px;' src='../assets/img/sign-out.png'/>Abmelden</a>
+			  </li>
+			</ul>
+		  </div>
     </nav>
 
 
@@ -38,7 +50,7 @@
         <div class="alert alert-danger mt-4" role="alert">
             Diese Webseite ist nicht für Mobilgeräte optimiert.</br>
             <a href="javascript:history.back()" class="alert-link">Zurück zur vorherigen Webseite...</a>
-        </div>
+		</div>
     </div>
 
 	<div class="modal fade" id="edit1Modal" tabindex="-1" role="dialog">
@@ -53,12 +65,16 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group mb-0">
-					  <input type="text" class="form-control" id="edit1Field">
+						<input type="hidden" class="form-control" id="edit1FieldHiddenKey">
+						<input type="hidden" class="form-control" id="edit1FieldHiddenId">
+						<input type="hidden" class="form-control" id="edit1FieldHiddenIndex">
+					    <input type="text" class="form-control" id="edit1Field">
 					</div>
-				  </form>
+				</form>
 			</div>
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Speichern</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="updateEntry()">Speichern</button>
 			</div>
 		  </div>
 		</div>
@@ -136,17 +152,18 @@
         </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/bootstrap-tables.min.js"></script>
-    <script src="assets/js/firebase-app.min.js"></script>
-    <script src="assets/js/firebase-auth.min.js"></script>
-    <script src="assets/js/firebase-database.min.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-tables.min.js"></script>
+    <script src="../assets/js/firebase-app.min.js"></script>
+    <script src="../assets/js/firebase-auth.min.js"></script>
+    <script src="../assets/js/firebase-database.min.js"></script>
+	<script src="../assets/js/lightbox.min.js"></script>
+	<script src="../assets/js/fixedColumns.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.bootstrap4.min.js"></script>
-    <script src="assets/js/patients.min.js"></script>
+    <script src="../assets/js/patients.min.js"></script>
 </body>
 
 </html>

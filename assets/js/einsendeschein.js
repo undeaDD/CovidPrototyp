@@ -1,3 +1,11 @@
+
+if (window.frameElement) {
+	$( "#headerNav" ).remove();
+	$( "#footerNav" ).remove();
+	$( "#cardImage" ).remove();
+	$("body").css('background', 'transparent');
+}
+
 window.addEventListener('resize', function(e) {
     var canvas = document.getElementById("sig-canvas");
     canvas.width = canvas.offsetWidth;
@@ -359,20 +367,4 @@ function googleTranslateElementInit() {
 
     jQuery('.goog-logo-link').css('display', 'none');
     jQuery('.goog-te-gadget').css('font-size', '0');
-}
-
-function login() {
-    $('#loginModal').modal('show');
-}
-
-function doLogin() {
-    let email = document.getElementById("login_email").value;
-    let password = document.getElementById("login_password").value;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-        console.log("authenticated");
-        window.location.href = "patients.html";
-    }).catch(function(error) {
-        console.log(error);
-    });
-    return false;
 }

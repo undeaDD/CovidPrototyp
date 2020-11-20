@@ -95,6 +95,9 @@ a:visited {
     color: #BAAC9E;
 }
 
+a {
+	cursor: pointer;
+}
 
 /* selected link */
 
@@ -117,5 +120,11 @@ table.dataTable td.focus {
 	background-color: rgb(0, 0, 0, 0.075) !important;
 }
 
-::selection { background: transparent; color: inherit !important;}
-::-moz-selection { background: transparent; color: inherit !important; }
+#table1, #table2 {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

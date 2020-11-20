@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.min.css">
+    <title>Tierarztpraxis Windhaus - Index</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark" style="background-color: rgba(186,172,158,0.81);">
+        <a class="navbar-brand" href="#">
+			Prototyp 1.3.0
+		</a>
+
+    </nav>
+
+    <div class="container">
+        <h1 class="my-4">
+            Übersichtsseite
+            <small class="text-muted">(temporär)</small>
+        </h1>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-5">
+
+                <div class="card m-3" style="width: 20rem;">
+                    <div class="card-header">
+                        <b class="card-title">Einsendebescheid</b>
+                    </div>
+                    <img class="card-img-top" src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fu.nu%2Fk8ey4&chs=180x180&choe=UTF-8&chld=L|2'></img>
+                    <div class="card-body">
+                        <a href="../einsendeschein.html" class="btn btn-primary">Offizieller Link</a>
+                        <a href="https://u.nu/k8ey4" class="btn btn-secondary">u.nu/k8ey4</a>
+                    </div>
+                </div>
+
+                <div class="card m-3" style="width: 20rem;">
+                    <div class="card-header">
+                        <b class="card-title">Patientenliste</b>
+                    </div>
+                    <div class="card-body">
+                        <a href="patients.html" class="btn btn-primary">Offizieller Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5">
+
+                <div class="card m-3" style="width: 20rem;">
+                    <div class="card-header">
+                        <b class="card-title">Chrome Kiosk Modus</b>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Mit dem Kiosk Modus verhindert man, dass der Browser / die Webseite geschlossen werden kann. Dies ist erstrebenswert für die drei Laptops vor der Praxis. Damit Patienten nicht auf dumme Gedanken kommen.</p>
+                        <a href="https://dandelion-burdock.com/articles/chrome-kiosk-mode" class="btn btn-primary">Anleitung</a>
+                    </div>
+                </div>
+
+                <div class="card m-3" style="width: 20rem;">
+                    <div class="card-header">
+                        <b class="card-title">Temporäre Login Daten</b>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Es gibt ab jetzt geschützte Webseiten, die erst mit einem Login verfügbar werden.</br>
+                            </br>Anmelden ist momentan auf der Einsende Seite ganz unten ( im Footer versteckt ) möglich. Wird aber noch vereinfacht.</br>
+                            </br><b>Email:</b> admin@tierarztpraxis-windhaus.de</br><b>Pw: </b>password</p>
+                        <a href="javascript:firebase.auth().signOut()" class="btn btn-danger">Ausloggen</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/firebase-app.min.js"></script>
+    <script src="../assets/js/firebase-auth.min.js"></script>
+    <script src="../assets/js/temp.min.js"></script>
+</body>
+
+</html>

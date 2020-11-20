@@ -8,6 +8,10 @@ firebase.initializeApp({
     appId: "1:857488715212:web:763e73804d890e4bf40169"
 });
 
+function signout() {
+	firebase.auth().signOut();
+}
+
 function snapshotToArray(snapshot) {
     var returnArr = [];
 
@@ -33,12 +37,53 @@ window.addEventListener('message', function(message) {
 	}
 });
 
+function indexToFirebaseNames(column) {
+	switch (parseInt(column)) {
+		case 2:
+			return "lastname"
+		case 3:
+			return "firstname"
+		case 4:
+			return "street"
+		case 5:
+			return "zip"
+		case 6:
+			return "address"
+		case 7:
+			return "birthdate"
+		case 8:
+			return "telephone"
+		case 9:
+			return "mobile"
+		case 10:
+			return "fax"
+		case 11:
+			return "email"
+		case 12:
+			return "emailcopy"
+		case 13:
+			return "insertDate"
+		default:
+			alert("fatal Error");
+	}
+	return "name"
+}
+
+function updateEntry() {
+	const key = $("#edit1FieldHiddenKey").val();
+	const id = $("#edit1FieldHiddenId").val().split(".")[1];
+	const index = indexToFirebaseNames($("#edit1FieldHiddenIndex").val());
+	firebase.database().ref("requests/" + key + "/" + "p" + id + "_" + index).set($("#edit1Field").val());
+}
+
 function approveEntry(row) {
 	alert("'Anmeldungen abspeichern' wurde noch nicht vollständig implementiert...");
 }
 
 function removeEntry(row) {
-	firebase.database().ref("requests/" + row).remove();
+	if (confirm('Soll der Eintrag wirklich gelöscht werden?')) {
+		firebase.database().ref("requests/" + row).remove();
+	}
 }
 
 $(function() {
@@ -53,7 +98,7 @@ $(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
             firebase.auth().signOut();
-            window.location.href = "einsendeschein.html";
+            window.location.href = "login.html";
         } else {
             document.body.classList.remove("d-none");
 
@@ -66,6 +111,7 @@ $(function() {
                     switch (elem.morepatients) {
                         case "4":
                             temp.push({
+								key: elem.id,
                                 id: count + ".5",
                                 lname: elem.p5_lastname,
                                 fname: elem.p5_firstname,
@@ -84,6 +130,7 @@ $(function() {
                             });
                         case "3":
                             temp.push({
+								key: elem.id,
                                 id: count + ".4",
                                 lname: elem.p4_lastname,
                                 fname: elem.p4_firstname,
@@ -102,6 +149,7 @@ $(function() {
                             });
                         case "2":
                             temp.push({
+								key: elem.id,
                                 id: count + ".3",
                                 lname: elem.p3_lastname,
                                 fname: elem.p3_firstname,
@@ -120,6 +168,7 @@ $(function() {
                             });
                         case "1":
                             temp.push({
+								key: elem.id,
                                 id: count + ".2",
                                 lname: elem.p2_lastname,
                                 fname: elem.p2_firstname,
@@ -182,9 +231,9 @@ $(function() {
                         "emptyTable": "Keine Einträge vorhanden",
                     },
                     "buttons": [{
-                        text: "<img height='21' class='mr-2' style='margin-top: -4px;' src='assets/img/file-plus.png'/>Neuer Eintrag",
+                        text: "<img height='21' class='mr-2' style='margin-top: -4px;' src='../assets/img/file-plus.png'/>Neuer Eintrag",
                         action: function(e, dt, node, config) {
-							$("#addIFrame").prop('src', "einsendeschein.html");
+							$("#addIFrame").prop('src', "../einsendeschein.html");
 						    $('#addModal').modal({
 								show: true
 							});
@@ -205,8 +254,8 @@ $(function() {
 						"searchable": false,
                         "render": function(data, type, row, meta) {
 							if (row.id.endsWith(".1")) {
-								return "<a onclick='approveEntry(\"" + row.key + "\")'><img height='21' class='mr-3' src='assets/img/check-circle.png'/></a>" +
-								"<a onclick='removeEntry(\"" + row.key + "\")'><img height='21' src='assets/img/trash.png'/></a>";
+								return "<a onclick='approveEntry(\"" + row.key + "\")'><img height='21' class='mr-3' src='../assets/img/check-circle.png'/></a>" +
+								"<a onclick='removeEntry(\"" + row.key + "\")'><img height='21' src='../assets/img/trash.png'/></a>";
 							}
 							return "";
                         },
@@ -236,35 +285,14 @@ $(function() {
                     }, {
                         "data": "tel",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && (typeof data !== 'undefined')) {
-                                return '<a href="tel:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "mobile",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && (typeof data !== 'undefined')) {
-                                return '<a href="tel:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "fax",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && (typeof data !== 'undefined')) {
-                                return '<a href="fax:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "email",
@@ -299,15 +327,15 @@ $(function() {
                         "render": function(data, type, row, meta) {
                             var temp = "";
                             if (row.signature) {
-                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/signature.png"/></a>';
+                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/signature.png"/></a>';
                             }
 
                             if (row.front) {
-                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/id-card.png"/></a>';
+                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/id-card.png"/></a>';
                             }
 
                             if (row.back) {
-                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="assets/img/id-card.png"/></a>';
+                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/id-card.png"/></a>';
                             }
 
                             return temp
@@ -324,10 +352,15 @@ $(function() {
 					$('#edit1Field').focus();
 				})
 
-				table1.on('dblclick', 'td', function() {
-					var cell = table1.cell(this)
+				$('#table1').DataTable().on('dblclick', 'td', function() {
+					var row = $('#table1').DataTable().row(this);
+					var cell = $('#table1').DataTable().cell(this);
+					console.log(this);
 					const blacklist = [0, 1, 14];
 					if (!blacklist.includes(cell.index().column)) {
+						$("#edit1FieldHiddenKey").val(row.data().key);
+						$("#edit1FieldHiddenId").val(row.data().id);
+						$("#edit1FieldHiddenIndex").val(cell.index().column);
 						$("#edit1Field").val(cell.data());
 						$('#edit1Modal').modal({
 							keyboard: false,
@@ -359,8 +392,11 @@ $(function() {
                         "emptyTable": "Keine Einträge vorhanden",
                     },
                     "buttons": [{
-                        extend: 'csvHtml5',
-                        text: '<i class="las la-file-csv mr-2"></i>Für Excel Exportieren',
+						extend: 'csvHtml5',
+						charset: 'UTF-8',
+						fieldSeparator: ';',
+						bom: true,
+                        text: "<img height='21' class='mr-2' style='margin-top: -4px;' src='../assets/img/file-export.png'/>Für Excel Exportieren",
                         className: 'customButton mr-2'
                     }],
                     "columns": [{
@@ -388,35 +424,14 @@ $(function() {
                     }, {
                         "data": "tel",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && data != "-") {
-                                return '<a href="tel:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "mobile",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && data != "-") {
-                                return '<a href="tel:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "fax",
                         "defaultContent": "-",
-                        "render": function(data, type, row, meta) {
-                            if (type === 'display' && data != "-") {
-                                return '<a href="fax:' + data + '">' + data + '</a>';
-                            } else {
-                                return data;
-                            }
-                        },
                         "orderable": false
                     }, {
                         "data": "email",
@@ -462,15 +477,15 @@ $(function() {
                         "render": function(data, type, row, meta) {
                             var temp = "";
                             if (row.signature) {
-                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/signature.png"/></a>';
+                                temp += '<a href="' + row.signature + '" data-title="Signatur:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/signature.png"/></a>';
                             }
 
                             if (row.front) {
-                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.front + '" data-title="Vorderseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/id-card.png"/></a>';
                             }
 
                             if (row.back) {
-                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img src="https://img.icons8.com/ios-glyphs/30/BAAC9E/identification-documents--v1.png"/></a>';
+                                temp += '<a href="' + row.back + '" data-title="Rückseite:" data-toggle="lightbox" class="mx-1"><img height="21" src="../assets/img/id-card.png"/></a>';
                             }
 
                             return temp
