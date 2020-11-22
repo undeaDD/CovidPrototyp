@@ -270,9 +270,7 @@ async function checkAndInsert() {
     }
 
     obj.signature = document.getElementById("sig-canvas").toDataURL();
-
     obj["insertDate"] = (new Date()).toLocaleDateString();
-	obj["OS"] = navigator.platform;
 
     if (result) {
         const key = firebase.database().ref().child('requests').push().key;

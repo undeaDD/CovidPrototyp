@@ -74,7 +74,33 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-			  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="updateEntry()">Speichern</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="updateEntry1()">Speichern</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="modal fade" id="edit2Modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Bearbeiten:</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group mb-0">
+						<input type="hidden" class="form-control" id="edit2FieldHiddenId">
+						<input type="hidden" class="form-control" id="edit2FieldHiddenIndex">
+					    <input type="text" class="form-control" id="edit2Field">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="updateEntry2()">Speichern</button>
 			</div>
 		  </div>
 		</div>
@@ -93,7 +119,8 @@
     <div class="container-fluid d-none d-lg-block">
         <div class="card my-3">
             <div class="card-header">
-                <b class="card-title">Neue Anmeldungen</b>
+				<b class="card-title">Neue Anmeldungen:</b>
+				<span class="badge badge-secondary" id="count1"></span>
             </div>
             <div class="card-body pt-3">
                 <table class="table table-bordered" id="table1">
@@ -111,7 +138,8 @@
                             <th>Mobil</th>
                             <th>Fax</th>
                             <th>Email</th>
-                            <th>Email Kopie</th>
+							<th>Email Kopie</th>
+							<th>Ausweisnummer</th>
                             <th>Datum Eingang</th>
                             <th>Anhänge</th>
                         </tr>
@@ -122,13 +150,17 @@
 
         <div class="card my-3">
             <div class="card-header">
-                <b class="card-title">Patienten Bestandsliste</b>
+				<b class="card-title">Patienten Bestandsliste:</b>
+				<span class="badge badge-secondary" id="count2"></span>
             </div>
             <div class="card-body pt-3">
+				<input type="file" style="display: none;" id="fileupload" accept=".xlsx, .xls, .csv"/>
                 <table class="table table-bordered table-striped" id="table2">
                     <thead>
                         <tr>
-                            <th>ID</th>
+							<th>Aktionen</th>
+							<th>ID</th>
+							<th>Pool ID</th>
                             <th>Name</th>
                             <th>Vorname</th>
                             <th>Straße, Hausnummer</th>
@@ -141,8 +173,8 @@
                             <th>Email</th>
                             <th>Email Kopie</th>
                             <th>Ausweisnummer</th>
-                            <th>Datum Entnahme</th>
                             <th>Datum Eingang</th>
+                            <th>Datum Entnahme</th>
                             <th>Datum Test</th>
                             <th>Anhänge</th>
                         </tr>
