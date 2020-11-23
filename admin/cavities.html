@@ -52,20 +52,30 @@
 		</div>
     </div>
 
+	<noscript>
+		<div class="container">
+			<div class="alert alert-danger mt-4" role="alert">
+				Diese Webseite funktioniert nicht ohne Javascript.</br>
+				<a href="javascript:history.back()" class="alert-link">Zurück zur vorherigen Webseite...</a>
+			</div>
+		</div>
+	</noscript>
+
     <div class="container-fluid d-none d-lg-block">
         <div class="card my-3">
             <div class="card-header">
-                <b class="card-title">Gespeicherte Kavitätspläne</b>
+				<b class="card-title">Gespeicherte Kavitätspläne</b>
+				<span class="badge badge-secondary" id="count3"></span>
             </div>
             <div class="card-body pt-3">
                 <table class="table table-bordered table-striped" id="table3">
                     <thead>
                         <tr>
+							<th>Aktionen</th>
 							<th>Nr.</th>
 							<th>Status</th>
                             <th>Datum</th>
 							<th>Anzahl</th>
-							<th>Aktionen</th>
                         </tr>
                     </thead>
                 </table>
