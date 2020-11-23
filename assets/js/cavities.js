@@ -24,6 +24,29 @@ function snapshotToArray(snapshot) {
     return returnArr;
 };
 
+function createEntry() {
+	firebase.database().ref('cavities').once('value').then((snapshot) => {
+		var highest = 0;
+		snapshot.forEach(function(childSnapshot) {
+			const temp = parseInt(childSnapshot.key);
+			console.log(temp)
+			highest = highest < temp ? temp : highest;
+		});
+		console.log(highest)
+		firebase.database().ref("cavities/" + (highest + 1)).set({
+			status: "In Bearbeitung",
+			date4: (new Date()).toLocaleDateString(),
+			count: 0
+		});
+	});
+}
+
+function removeEntry(row) {
+	if (confirm('Soll der Eintrag wirklich gelöscht werden?')) {
+		firebase.database().ref(row).remove();
+	}
+}
+
 $(function() {
 
     $(window).resize(function() {
@@ -47,14 +70,12 @@ $(function() {
                     "paging": false,
                     "ordering": true,
                     "info": false,
-					"keys": {
-						"columns": [1, 2]
-					},
+					"keys": false,
                     "searching": true,
                     "fixedHeader": true,
                     "scrollX": true,
 					"autoWidth": false,
-					"order": [[0, 'desc']],
+					"order": [[1, 'desc']],
                     "language": {
                         "search": "",
                         "searchPlaceholder": "Nach Plan suchen",
@@ -63,10 +84,13 @@ $(function() {
                     "buttons": [{
                         text: "<img height='21' class='mr-2' style='margin-top: -4px;' src='../assets/img/file-plus.png'/>Neuer Kavitätenplan",
                         action: function(e, dt, node, config) {
-
+							createEntry()
                         },
                         className: 'customButton mr-2'
-                    }],
+					}],
+					"columnDefs": [
+						{ "width": "80px", "targets": 0 },
+					],
                     "columns": [
 					{
 						"data": "actions",
@@ -74,7 +98,8 @@ $(function() {
 						"orderable": false,
 						"searchable": false,
 						"render": function(data, type, row, meta) {
-							return "" +
+							return "<a><img class='mr-2' height='21' src='../assets/img/pencil.png'/></a>" +
+							"<a><img class='mr-2' height='21' src='../assets/img/vial.png'/></a>" +
 							"<a onclick='removeEntry(\"cavities/" + row.id + "\")'><img height='21' src='../assets/img/trash.png'/></a>";
 						},
 					}, {
@@ -104,6 +129,52 @@ $(function() {
 				table3.columns.adjust().draw();
 				table3.fixedHeader.adjust().draw();
 				$("#count3").text(table3.data().count());
+			});
+
+			firebase.database().ref('patients').on('value', function(snapshot) {
+				var array = snapshotToArray(snapshot);
+				var table4 = $('#table4').DataTable({
+					"dom": "<'row'<'col-6 'B><'col-6'f>>" +
+						"<'row'<'col-sm-12'tr>>",
+					"blurable": false,
+					"destroy": true,
+					"paging": false,
+					"ordering": true,
+					"info": false,
+					"keys": false,
+					"searching": true,
+					"fixedHeader": true,
+					"scrollX": true,
+					"autoWidth": false,
+					"order": [[1, 'desc']],
+					"language": {
+						"search": "",
+						"searchPlaceholder": "Nach Eintrag suchen",
+						"emptyTable": "Keine Einträge vorhanden",
+					},
+					"buttons": [],
+					"columns": [
+					{
+						"data": "id",
+						"className": "bold",
+						"orderable": true
+					}, {
+						"data": "poolid",
+						"defaultContent": "-",
+						"orderable": false,
+						"searchable": true,
+					}, {
+						"data": "lname",
+						"orderable": false
+					}, {
+						"data": "fname",
+						"orderable": false
+					}],
+					"data": array,
+				});
+
+				table4.columns.adjust().draw();
+				table4.fixedHeader.adjust().draw();
 			});
         }
     });
