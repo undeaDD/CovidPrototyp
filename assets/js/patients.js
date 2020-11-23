@@ -588,7 +588,7 @@ $(function() {
 						"orderable": false,
 						"searchable": false,
 						"render": function(data, type, row, meta) {
-							return "" +
+							return "<a href='http://www.barcode-generator.org/phpqrcode/getCode.php?cht=qr&chl=" + row.id + "&chs=180x180&choe=UTF-8&chld=L|0' data-title='QR-Code:' data-toggle='lightbox' data-width=290 data-height=290 ><img height='21' class='mr-2' src='../assets/img/barcode-read.png'/></a>" +
 							"<a onclick='removeEntry(\"patients/" + row.id + "\")'><img height='21' src='../assets/img/trash.png'/></a>";
 						},
 					}, {
