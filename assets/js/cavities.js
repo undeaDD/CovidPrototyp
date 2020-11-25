@@ -41,6 +41,61 @@ function createEntry() {
 	});
 }
 
+function viewMatrix() {
+
+	$('select.bsselect').each(function( index ) {
+		$(this).empty();
+		$(this).append("<optgroup label='Extras'><option title='⠀'>-</option><option>NK</option><option>PK</option></optgroup>");
+		var patients = $("<optgroup label='Patienten'>");
+		$(this).append(patients);
+		patients.append("<option title='C1234'>C1234 - Wiencek Isabeau</option>");
+
+		if ($(this).parent().hasClass("dropdown")) {
+			console.log("refresh")
+			$(this).selectpicker('refresh');
+		} else {
+			console.log("init")
+			$(this).selectpicker({
+				maxOptions: false,
+				noneSelectedText : '⠀',
+				liveSearch: true,
+				liveSearchNormalize: true,
+				liveSearchPlaceholder: "Suchen...",
+				width: "100%",
+			});
+		}
+	});
+
+	$('#matrixModal').modal({
+		keyboard: false,
+		show: true
+	});
+}
+
+function testMatrix() {
+	$('select.bsselect').each(function( index ) {
+		$(this).empty();
+		$(this).append("<option title='-'>Negativ</option><option title='+'>Positiv</option>");
+
+		if ($(this).parent().hasClass("dropdown")) {
+			$(this).selectpicker('refresh');
+		} else {
+			$(this).selectpicker({
+				header: "Ergebnis:",
+				maxOptions: false,
+				noneSelectedText : '⠀',
+				liveSearch: false,
+				width: "100%",
+			});
+		}
+	});
+
+	$('#matrixModal').modal({
+		keyboard: false,
+		show: true
+	});
+}
+
 function removeEntry(row) {
 	if (confirm('Soll der Eintrag wirklich gelöscht werden?')) {
 		firebase.database().ref(row).remove();
@@ -98,9 +153,9 @@ $(function() {
 						"orderable": false,
 						"searchable": false,
 						"render": function(data, type, row, meta) {
-							return "<a><img class='mr-2' height='21' src='../assets/img/pencil.png'/></a>" +
-							"<a><img class='mr-2' height='21' src='../assets/img/vial.png'/></a>" +
-							"<a onclick='removeEntry(\"cavities/" + row.id + "\")'><img height='21' src='../assets/img/trash.png'/></a>";
+							return "<a onclick='viewMatrix(\"cavities/" + row.id + "\")'><img class='mr-2' height='21' src='../assets/img/pencil.png'/></a>" +
+							"<a onclick='removeEntry(\"cavities/" + row.id + "\")'><img class='mr-2' height='21' src='../assets/img/trash.png'/></a>" +
+							"<a onclick='testMatrix(\"cavities/" + row.id + "\")'><img height='21' src='../assets/img/vial.png'/></a>";
 						},
 					}, {
                         "data": "id",

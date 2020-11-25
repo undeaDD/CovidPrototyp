@@ -132,3 +132,23 @@ table.dataTable td.focus {
 #count1, #count2 {
 	padding: 5px 8px;
 }
+
+.modal-lg {
+    max-width: 90% !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #BAAC9E;
+}
+
+#table5 th {
+	width: 7.7%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.btn-light {
+	background-color: white;
+}
