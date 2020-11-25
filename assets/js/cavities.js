@@ -51,10 +51,8 @@ function viewMatrix() {
 		patients.append("<option title='C1234'>C1234 - Wiencek Isabeau</option>");
 
 		if ($(this).parent().hasClass("dropdown")) {
-			console.log("refresh")
 			$(this).selectpicker('refresh');
 		} else {
-			console.log("init")
 			$(this).selectpicker({
 				maxOptions: false,
 				noneSelectedText : '⠀',
@@ -144,7 +142,7 @@ $(function() {
                         className: 'customButton mr-2'
 					}],
 					"columnDefs": [
-						{ "width": "80px", "targets": 0 },
+						{ "width": "110px", "targets": 0 },
 					],
                     "columns": [
 					{
@@ -155,7 +153,8 @@ $(function() {
 						"render": function(data, type, row, meta) {
 							return "<a onclick='viewMatrix(\"cavities/" + row.id + "\")'><img class='mr-2' height='21' src='../assets/img/pencil.png'/></a>" +
 							"<a onclick='removeEntry(\"cavities/" + row.id + "\")'><img class='mr-2' height='21' src='../assets/img/trash.png'/></a>" +
-							"<a onclick='testMatrix(\"cavities/" + row.id + "\")'><img height='21' src='../assets/img/vial.png'/></a>";
+							"<a onclick='testMatrix(\"cavities/" + row.id + "\")'><img class='mr-2' height='21' src='../assets/img/vial.png'/></a>" +
+							"<a><img height='21' src='../assets/img/print.png'/></a>";
 						},
 					}, {
                         "data": "id",
